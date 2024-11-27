@@ -4,19 +4,6 @@ html, body, #root {
   margin: 0;
   padding: 0;
 }
-
-.side-buttons {
-  font-family: Inter, sans-serif;
-  font-size: 24px;
-  border: none;
-}
-.side-buttons.active {
-  font-weight: bold;
-  color: black;
-}
-.side-buttons .anticon {
-  margin-right: 16px;
-}
 /*.side-buttons:hover {*/
 /*  background-color: grey !important;*/
 /*  color: #ffffff !important;*/
