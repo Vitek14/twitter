@@ -57,7 +57,7 @@ const SideMenu = () => {
         <Sider width={400} style={{background: "#ffffff"}}>
             <Layout
                 style={{
-                    marginTop: 20,
+                    marginTop: 0,
                     marginLeft: 60
                 }}
             >
@@ -66,7 +66,7 @@ const SideMenu = () => {
                         background: "#fff"
                     }}
                 >
-                    <XOutlined style={{fontSize: "30px", marginLeft: -30}}/>
+                    <XOutlined style={{fontSize: "24px", marginLeft: -30}}/>
                 </Header>
                 <Content
                     style={{
