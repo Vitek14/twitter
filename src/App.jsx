@@ -2,6 +2,8 @@ import {Layout, Space} from 'antd';
 import './App.css'
 import SideMenu from "./components/side_menu/side_menu.jsx"
 import ProfileHeader from "./components/center_part/ProfileHeader.jsx";
+import ProfileContent from "./components/center_part/ProfileContent.jsx"
+import {Content} from "antd/es/layout/layout.js";
 
 const App = () => {
 
@@ -14,6 +16,19 @@ const App = () => {
             <SideMenu/>
             <Layout style={{ marginLeft: -40 }}>
                 <ProfileHeader/>
+                <Content style={{ margin: '0px 40px 0', marginRight: "920px", overflow: 'initial', border: '1px solid #000' }}>
+                    <div
+                    style={{
+                        marginTop: "0px",
+                        // padding: 24,
+                        textAlign: 'left',
+                    }}
+                    className="content-tweet"
+                    >
+                        <ProfileContent/>
+                {/*<p>long content</p>*/}
+                </div>
+                </Content>
             </Layout>
         </Layout>
     )

@@ -4,6 +4,15 @@ html, body, #root {
   margin: 0;
   padding: 0;
 }
+
+/*@media (min-width: 1201px) {*/
+/*    .content-tweet {*/
+/*      margin-right: 535px;*/
+
+/*    }*/
+/*}*/
+
+
 /*.side-buttons:hover {*/
 /*  background-color: grey !important;*/
 /*  color: #ffffff !important;*/
