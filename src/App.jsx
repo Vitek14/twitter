@@ -1,4 +1,4 @@
-import {Layout, Space} from 'antd';
+import {Divider, Layout, Space} from 'antd';
 import './App.css'
 import SideMenu from "./components/side_menu/side_menu.jsx"
 import ProfileHeader from "./components/center_part/ProfileHeader.jsx";
@@ -14,7 +14,7 @@ const App = () => {
             }}
             >
             <SideMenu/>
-            <Layout style={{ marginLeft: -40 }}>
+            <Layout style={{ marginLeft: -40, backgroundColor: "#fff" }}>
                 <ProfileHeader/>
                 <Content style={{ margin: '0px 40px 0', marginRight: "620px", overflow: 'initial', border: '1px solid #000' }}>
                     <div
