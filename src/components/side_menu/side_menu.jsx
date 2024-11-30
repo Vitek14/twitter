@@ -120,15 +120,15 @@ const SideMenu = () => {
                                 onClick={() => handleButtonClick(8)}>
                             Verified Orgs
                         </Button>
-                        <Button color="default" variant="link" icon={isActive === 8 ? <UserOutlined/> : <UserOutlined/>}
-                                className={`side-buttons ${isActive === 8 ? 'active' : ''}`}
-                                onClick={() => handleButtonClick(8)}>
-                            Profile
-                        </Button>
-                        <Button color="default" variant="link" icon={isActive === 9 ? <MoreOutlined/> : <MoreOutlined/>}
+                        <Button color="default" variant="link" icon={isActive === 9 ? <UserOutlined/> : <UserOutlined/>}
                                 className={`side-buttons ${isActive === 9 ? 'active' : ''}`}
                                 onClick={() => handleButtonClick(9)}>
-                            Lists
+                            Profile
+                        </Button>
+                        <Button color="default" variant="link" icon={isActive === 10 ? <MoreOutlined/> : <MoreOutlined/>}
+                                className={`side-buttons ${isActive === 10 ? 'active' : ''}`}
+                                onClick={() => handleButtonClick(10)}>
+                            More
                         </Button>
                         <Button type="primary" shape="round"
                                 style={{width: '270px', height: '60px', fontWeight: 'bold', fontSize: 16, marginBottom: "200px"}}>

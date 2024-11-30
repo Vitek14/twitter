@@ -1,4 +1,3 @@
-import "./ProfileContent.css"
 import {Avatar, Button, Col, Divider, Image, Row, Typography} from "antd";
 import {
     BankOutlined, CalendarOutlined,
@@ -8,9 +7,18 @@ import {
     MoreOutlined, SmileOutlined,
     UserOutlined
 } from "@ant-design/icons";
+import "./ProfileContent.css"
+import "./ProfileContent.css"
+import {useState} from "react";
+
 
 const Text = Typography
 const ProfileContent = () => {
+    const [selectedButton, setSelectedButton] = useState(null);
+
+      const handleClick = (buttonIndex) => {
+        setSelectedButton(buttonIndex);
+      };
     return (
         <div className="ProfileContent">
             {/*<img src="https://st4.depositphotos.com/7269304/24917/i/450/depositphotos_249175016-stock-photo-background-white-marble-pattern-wavy.jpg"/>*/}
@@ -282,41 +290,58 @@ const ProfileContent = () => {
                 // border: "1px solid #000"
             }}>
                 <Col>
-                    <Button style={{
+                    <Button
+                            key={1}
+                            className={`custom-button ${selectedButton === 1 ? 'selected' : ''}`}
+                            onClick={() => handleClick(1)}
+                            style={{
                         fontFamily: "Inter, sans-serif",
                         fontSize: 15,
                         fontWeight: "bold",
-                        marginRight: "125px"
+                        marginLeft: "50px",
+                        marginRight: "100px"
                     }}>
                         Posts
                     </Button>
                 </Col>
                 <Col>
-                    <Button style={{
+                    <Button
+                        key={2}
+                        className={`custom-button ${selectedButton === 2 ? 'selected' : ''}`}
+                        onClick={() => handleClick(2)}
+                        style={{
                         fontFamily: "Inter, sans-serif",
                         fontSize: 15,
                         fontWeight: "bold",
-                        marginRight: "125px"
+                        marginRight: "100px"
                     }}>
                         Replies
                     </Button>
                 </Col>
                 <Col>
-                    <Button style={{
+                    <Button
+                        key={3}
+                        className={`custom-button ${selectedButton === 3 ? 'selected' : ''}`}
+                        onClick={() => handleClick(3)}
+                        style={{
                         fontFamily: "Inter, sans-serif",
                         fontSize: 15,
                         fontWeight: "bold",
-                        marginRight: "125px"
+                        marginRight: "100px"
                     }}>
                         Highlights
                     </Button>
                 </Col>
                 <Col>
-                    <Button style={{
+                    <Button
+                        key={4}
+                        className={`custom-button ${selectedButton === 4 ? 'selected' : ''}`}
+                        onClick={() => handleClick(4)}
+                        style={{
                         fontFamily: "Inter, sans-serif",
                         fontSize: 15,
                         fontWeight: "bold",
-                        marginRight: "125px"
+                        marginRight: "100px"
                     }}>
                         Media
                     </Button>

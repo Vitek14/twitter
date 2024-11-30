@@ -1,10 +1,10 @@
-import {Divider, Layout, Space} from 'antd';
+import {Col, Divider, Layout, Row, Space} from 'antd';
 import './App.css'
 import SideMenu from "./components/side_menu/side_menu.jsx"
 import ProfileHeader from "./components/center_part/ProfileHeader.jsx";
 import ProfileContent from "./components/center_part/ProfileContent.jsx"
 import Post from "./components/center_part/Post.jsx"
-import {Content} from "antd/es/layout/layout.js";
+import {Content, Footer} from "antd/es/layout/layout.js";
 
 const App = () => {
 
@@ -37,6 +37,24 @@ const App = () => {
                 {/*<p>long content</p>*/}
                 </div>
                 </Content>
+                <Footer style={{
+                    position: "relative",
+                    left: "40px",
+                    marginRight: "660px",
+                    backgroundColor: "#fff",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    textAlign: "center"
+                    // border: '1px solid #000',
+                }}>
+                    <Row style={{
+                    }}>
+                        <Col>
+                            Дальше ничего нет
+                        </Col>
+                    </Row>
+                </Footer>
             </Layout>
         </Layout>
     )
