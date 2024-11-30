@@ -54,7 +54,7 @@ const SideMenu = () => {
     };
 
     return (
-        <Sider width={400} style={{background: "#ffffff"}}>
+        <Sider width={400} style={{ position: 'fixed', background: "#ffffff"}}>
             <Layout
                 style={{
                     marginTop: 0,

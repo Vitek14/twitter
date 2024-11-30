@@ -14,7 +14,7 @@ const App = () => {
             }}
             >
             <SideMenu/>
-            <Layout style={{ marginLeft: -40, backgroundColor: "#fff" }}>
+            <Layout style={{ marginLeft: 400, backgroundColor: "#fff" }}>
                 <ProfileHeader/>
                 <Content style={{ margin: '0px 40px 0', marginRight: "620px", overflow: 'initial', border: '1px solid #000' }}>
                     <div
