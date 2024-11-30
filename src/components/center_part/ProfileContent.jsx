@@ -18,7 +18,7 @@ const ProfileContent = () => {
                 src="https://i.pinimg.com/originals/70/31/2d/70312d533a72f2ae4e934fb93d2673c7.jpg"
                 className="profileBanner"
             />
-            <Avatar size={152} src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            <Avatar size={152} src="src/assets/Avatar.png"
             style={{
                 marginTop: "-80px",
                 marginLeft: "20px"
@@ -26,7 +26,6 @@ const ProfileContent = () => {
             <Row gutter={8} style={{
                 position: "relative",
                 top: "-55px",
-                // border: "1px solid #000"
             }}>
                 <Col push={18} style={{
                     marginLeft: "15px"  // Добавляет отступ для того, чтобы было ближе к левой менюшке

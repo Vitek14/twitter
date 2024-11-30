@@ -16,10 +16,11 @@ import {
     BookOutlined,
     UserOutlined,
     MoreOutlined,
-    CheckCircleTwoTone
+    CheckCircleTwoTone, CommentOutlined, CheckCircleOutlined, CheckCircleFilled
 } from "@ant-design/icons";
 import { Button } from 'antd';
 import {useState} from "react";
+
 const { Content, Footer, Sider } = Layout;
 
 const { Text } = Typography;
@@ -29,7 +30,7 @@ const FooterSide = () => {
         <Footer style={{ display: 'flex', justifyContent: 'flex-start', background: "#fff", padding: 0 }}>
             <Row justify="space-between" gutter={[16, 16]}>
                 <Col>
-                    <Avatar size={40} src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"/>
+                    <Avatar size={40} src="src/assets/Avatar.png"/>
                 </Col>
                 <Col>
                     <Text strong>Stas Neprokin</Text>
@@ -58,7 +59,7 @@ const SideMenu = () => {
             <Layout
                 style={{
                     marginTop: 0,
-                    marginLeft: 60
+                    marginLeft: 60,
                 }}
             >
                 <Header
@@ -71,6 +72,7 @@ const SideMenu = () => {
                 <Content
                     style={{
                         background: "#fff",
+                        height: "100vh",
                         padding: 20
                     }}
                 >
@@ -108,18 +110,28 @@ const SideMenu = () => {
                                 onClick={() => handleButtonClick(6)}>
                             Bookmarks
                         </Button>
-                        <Button color="default" variant="link" icon={isActive === 7 ? <UserOutlined/> : <UserOutlined/>}
+                        <Button color="default" variant="link" icon={isActive === 7 ? <CommentOutlined/> : <CommentOutlined/>}
                                 className={`side-buttons ${isActive === 7 ? 'active' : ''}`}
                                 onClick={() => handleButtonClick(7)}>
-                            Profile
+                            Communities
                         </Button>
-                        <Button color="default" variant="link" icon={isActive === 8 ? <MoreOutlined/> : <MoreOutlined/>}
+                         <Button color="default" variant="link" icon={isActive === 8 ? <CheckCircleFilled/> : <CheckCircleOutlined />}
                                 className={`side-buttons ${isActive === 8 ? 'active' : ''}`}
                                 onClick={() => handleButtonClick(8)}>
+                            Verified Orgs
+                        </Button>
+                        <Button color="default" variant="link" icon={isActive === 8 ? <UserOutlined/> : <UserOutlined/>}
+                                className={`side-buttons ${isActive === 8 ? 'active' : ''}`}
+                                onClick={() => handleButtonClick(8)}>
+                            Profile
+                        </Button>
+                        <Button color="default" variant="link" icon={isActive === 9 ? <MoreOutlined/> : <MoreOutlined/>}
+                                className={`side-buttons ${isActive === 9 ? 'active' : ''}`}
+                                onClick={() => handleButtonClick(9)}>
                             Lists
                         </Button>
                         <Button type="primary" shape="round"
-                                style={{width: '270px', height: '60px', fontWeight: 'bold', fontSize: 16}}>
+                                style={{width: '270px', height: '60px', fontWeight: 'bold', fontSize: 16, marginBottom: "200px"}}>
                             Post
                         </Button>
                     </Space>
