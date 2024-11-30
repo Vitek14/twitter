@@ -1,6 +1,6 @@
-import {Button, FloatButton, Space, Typography} from "antd";
+import {Button, Space, Typography} from "antd";
 import {Header} from "antd/es/layout/layout.js";
-import {ArrowLeftOutlined, CheckCircleTwoTone, FastBackwardOutlined} from "@ant-design/icons";
+import {ArrowLeftOutlined, CheckCircleTwoTone } from "@ant-design/icons";
 import "./ProfileHeader.css"
 
 const Text = Typography;
