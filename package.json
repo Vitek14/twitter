@@ -12,6 +12,10 @@
   "dependencies": {
     "@ant-design/icons": "^5.5.2",
     "@ant-design/icons-svg": "^4.4.2",
+    "@emotion/react": "^11.13.5",
+    "@emotion/styled": "^11.13.5",
+    "@mui/icons-material": "^6.1.9",
+    "@mui/material": "^6.1.9",
     "antd": "^5.22.2",
     "antd-style": "^3.7.1",
     "react": "^18.3.1",
