@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import {Menu, Button, Card, Row, Col, Avatar, Space, Typography} from 'antd';
+import { useState } from 'react';
+import {Menu, Button, Row, Col, Avatar, Typography} from 'antd';
 import VerifiedIcon from '@mui/icons-material/Verified';
 
 const items = [
