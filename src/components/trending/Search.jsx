@@ -33,11 +33,11 @@ const SearchComponent = () => {
       <Row
         style={{
           background: "#f7f9f9",
-          borderRadius: "360px",
-          width: "60%",
+          borderRadius: "384px",
+          width: "475px",
           height: "44px",
-          marginLeft: "25px",
-          marginTop: "4px",
+          marginLeft: "33px",
+          marginTop: "5px",
           border: isFocused ? '1px solid #00008B' : 'none',
         }}
       >
@@ -45,14 +45,14 @@ const SearchComponent = () => {
           style={{
             position: "relative",
             alignContent: "center",
-            marginLeft: "12px",
-            marginRight: "22px",
+            marginLeft: "16px",
+            marginRight: "26px",
           }}
         >
           <SearchIcon
             style={{
               color: isFocused ? '#00008B' : '#536471',
-              fontSize: "20px",
+              fontSize: "27px",
             }}
           />
         </Col>

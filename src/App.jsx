@@ -7,6 +7,7 @@ import Post from "./components/center_part/Post.jsx"
 import SearchComponent from "./components/trending/Search.jsx";
 import {Content, Footer} from "antd/es/layout/layout.js";
 import TrendingPeople from "./components/trending/TrendingPeople.jsx";
+import TrendsRecomendation from "./components/trending/TrendsRecomendation.jsx";
 
 const App = () => {
 
@@ -61,6 +62,7 @@ const App = () => {
         <Layout style={{ backgroundColor: "#fff", border: '1px solid #000' }}>
           <SearchComponent/>
           <TrendingPeople/>
+          <TrendsRecomendation/>
         </Layout>
         </Layout>
     )

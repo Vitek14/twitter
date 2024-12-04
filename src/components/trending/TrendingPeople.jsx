@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import {Menu, Button, Card, Row, Col, Avatar, Space, Typography} from 'antd';
-import {MoreOutlined} from "@ant-design/icons";
+import VerifiedIcon from '@mui/icons-material/Verified';
 
 const items = [
-  { key: '1', img: 'src/assets/Avatar.png', text: 'Typeface', secondText: "@typefaceai", button: 'Test' },
-  { key: '2', img: 'src/assets/Avatar.png', text: 'Paul Mit', secondText: "@pmitu", button: 'Test' },
-  { key: '3', img: 'src/assets/Avatar.png', text: 'Sam Altman', secondText: "@sams", button: 'Test' },
-  { key: '4', img: 'src/assets/Avatar.png', text: 'Maxim Boyarchuk', secondText: "Text2", button: 'Test' },
-  { key: '5', img: 'src/assets/Avatar.png', text: 'Sweetie Fox', secondText: "@sweetie", button: 'Test' },
-  { key: '6', img: 'src/assets/Avatar.png', text: 'Gleb Sharapo', secondText: "Text2", button: 'Test' },
+  { key: '1', img: 'src/assets/avatars/typeface.png', text: 'Typeface', secondText: "@typefaceai", button: 'Test' },
+  { key: '2', img: 'src/assets/avatars/paul.png', text: 'Paul Mit', secondText: "@pmitu", button: 'Test' },
+  { key: '3', img: 'src/assets/avatars/sam.png', text: 'Sam Altman', secondText: "@sams", button: 'Test' },
+  { key: '4', img: 'src/assets/Avatar.png', text: 'Maxim Boyarchuk', secondText: "@maximka", button: 'Test' },
+  { key: '5', img: 'src/assets/avatars/sweetie.jpg', text: 'Sweetie Fox', secondText: "@sweetie", button: 'Test' },
+  { key: '6', img: 'src/assets/Avatar.png', text: 'Gleb Sharapo', secondText: "@sharapogleb", button: 'Test' },
 ];
 
 const TrendingPeople = () => {
@@ -20,43 +20,41 @@ const TrendingPeople = () => {
 
   return (
     <div style={{
-      // height: "100%",
       marginTop: "16px",
+      paddingTop: "21px",
       marginLeft: "25px",
-      width: "356px",
+      width: "475px",
       backgroundColor: "#f7f9f9",
       borderRadius: "16px"
     }}>
-      {/* might like text */}
       <Typography.Text style={{
         margin: "16px",
         marginTop: "16px",
         marginLeft: "16px",
         fontWeight: "bold",
-        fontSize: "20px"
+        fontSize: "26px"
       }}>
-        {/* P tags causes unexpected spaces...*/}
         You might like
       </Typography.Text>
       <Menu style={{
         marginTop: "16px",
         backgroundColor: "#f7f9f9",
         borderRadius: "16px",
-        width: "356px"
-        // marginBottom: "20px"
+        width: "475px"
       }}>
         {items.slice(0, visibleItems).map((item) => (
           <Menu.Item key={item.key} style={{
+            height: "55px",
             marginBottom: "24px"
           }}>
-              <Row>
-                <Col>
-                  <Avatar src={item.img} size={42} />
-                  {/*<img src={item.img} alt={item.text} style={{ width: '100%' }} />*/}
+              <Row style={{ display: "flex", alignItems: "center" }}>
+                <Col style={{
+                  alignSelf: "flex-start"
+                }}>
+                  <Avatar src={item.img} size={53} />
                 </Col>
-                <Col span={13} style={{
+                <Col style={{
                   marginTop: "2px",
-                  marginRight: "10px",
                   alignContent: "flex-start",
                   alignItems: "flex-start",
                 }}>
@@ -65,18 +63,24 @@ const TrendingPeople = () => {
                     marginTop: "2px",
                     alignItems: "start",
                   }}>
-                    {/*<Typography>{item.text}</Typography>*/}
-                    <Typography.Text style={{ fontSize: "15px" }}>
+                    <Typography.Text style={{ fontSize: "20px" }}>
                       <p style={{ fontWeight: "bold", margin: 0, lineHeight: 1}}>{item.text}</p>
                       <p style={{ color: "#536471", marginTop: 5,  lineHeight: 1}}>{item.secondText}</p>
                     </Typography.Text>
                   </Col>
                 </Col>
-                <Col>
-
-                  {/* Follow button */}
+                <Col style={{
+                  alignSelf: "start",
+                  height: "auto",
+                  marginLeft: "5px",
+                }} span={4}>
+                  <VerifiedIcon style={{
+                    color: "#1D9BF0",
+                    fontSize: "22px",
+                  }}/>
+                </Col>
+                <Col style={{ marginLeft: "auto", alignSelf: "flex-start", marginTop: "8px" }}>  {/* Сомнительное решение. */}
                   <Button size="large" shape="round"
-
                     style={{
                         color: "white",
                         backgroundColor: "black",
@@ -95,6 +99,7 @@ const TrendingPeople = () => {
       )}
     </div>
   );
+
 };
 
 export default TrendingPeople;
