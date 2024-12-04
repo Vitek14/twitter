@@ -1,5 +1,4 @@
 import {Col, Row, Typography} from "antd";
-import React from "react";
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 const trends = [
@@ -11,7 +10,7 @@ const trends = [
   { key: '6', trendType: 'Technology · Trending', trendName: "#figma", popularityCount: "4,377 posts" }
 ];
 
-const TrendsRecomendation = () => {
+const TrendsRecommendation = () => {
   return (
     <div style={{
       marginTop: "16px",
@@ -64,4 +63,4 @@ const TrendsRecomendation = () => {
   );
 }
 
-export default TrendsRecomendation;
+export default TrendsRecommendation;
