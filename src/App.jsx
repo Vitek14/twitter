@@ -17,11 +17,11 @@ const App = () => {
         minHeight: "100vh"
       }}
     >
-      <Row style={{ height: "100%", backgroundColor: "#fff" }}>
+      <Row style={{ width: "auto", height: "100%", backgroundColor: "#fff" }}>
         <Col xs={2} sm={4} md={7} lg={8} xl={5} style={{ height: "100%" }}>
           <SideMenu/>
         </Col>
-        <Col xs={3} sm={5} md={9} lg={9} xl={10} style={{ height: "100%" }}>
+        <Col xs={3} sm={5} md={9} lg={9} xl={12} style={{ height: "100%" }}>
           <Layout style={{ backgroundColor: "#fff", border: "1px solid #000" }}>
             <ProfileHeader/>
             <Content style={{ margin: '0px 40px 0', overflow: 'initial', border: '1px solid #eff3f4' }}>
@@ -64,9 +64,9 @@ const App = () => {
             </Footer>
           </Layout>
         </Col>
-        <Col xs={24} sm={8} md={6} lg={4} xl={9} style={{ height: "100%" }}>
+        <Col style={{ flex: 1, height: "100%"}}>
           {/* Правое боковое меню */}
-          <Layout style={{ backgroundColor: "#fff" }}>
+          <Layout style={{ width: "100%", backgroundColor: "#fff" }}>
             <SearchComponent/>
             <TrendingPeople/>
             <TrendsRecommendation/>
