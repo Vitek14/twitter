@@ -43,11 +43,11 @@ const ProfileContent = () => {
           />
         </Col>
       </Row>
-      <Row gutter={8} style={{
+      <Row justify={"end"} gutter={8} style={{
         position: "relative",
         top: "-45px",
       }}>
-        <Col push={15} style={{  // TODO: Сделать адаптивные отступы
+        <Col style={{
           marginLeft: "15px"  // Добавляет отступ для того, чтобы было ближе к левой менюшке
         }}>
           <Button size="large" shape="circle" icon={<MoreOutlined style={{
@@ -60,7 +60,7 @@ const ProfileContent = () => {
 
             </Button>
         </Col>
-        <Col push={15}>
+        <Col>
           <Button size="large" shape="circle" icon={<MessageOutlined style={{
             fontSize: "24px"
           }}/>}
@@ -71,7 +71,9 @@ const ProfileContent = () => {
 
           </Button>
         </Col>
-        <Col push={15}>
+        <Col style={{
+          marginRight: "22px"
+        }}>
           <Button size="large" shape="round"
 
                   style={{

@@ -95,7 +95,7 @@ const TrendingPeople = () => {
         ))}
       </Menu>
       {visibleItems < items.length && (
-        <Button onClick={showMore}>Show More</Button>
+        <Button type={"link"} onClick={showMore} style={{ marginLeft: "10px", marginBottom: "21px", font: "Inter", fontWeight: "regular", fontSize: 20 }}>Show More</Button>
       )}
     </div>
   );
