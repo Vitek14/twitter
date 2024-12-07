@@ -17,18 +17,26 @@ const App = () => {
         minHeight: "100vh"
       }}
     >
-      <Row style={{ width: "auto", height: "100%", backgroundColor: "#fff" }}>
-        <Col xs={2} sm={4} md={7} lg={8} xl={5} style={{ height: "100%" }}>
+      <Row wrap={false} style={{ width: "100%", height: "100%", backgroundColor: "#fff" }}>
+        <Col xs={2} sm={4} md={7} lg={8} xl={{ flex: "0 0 300px" }} xxl={{ flex: "0 0 483px" }} style={{
+          maxWidth: "483px", // max to 800
+          minWidth: "0", // To stretch!
+          height: "100%",
+          width: "100%", // Not required, but can be useful
+        }}>
           <SideMenu/>
         </Col>
-        <Col xs={3} sm={5} md={9} lg={9} xl={12} style={{ height: "100%" }}>
-          <Layout style={{ backgroundColor: "#fff", border: "1px solid #000" }}>
+        <Col xs={3} sm={5} md={9} lg={{ flex: "0 0 500px" }} xl={{ flex: "0 0 700px" }} xxl={{ flex: "0 0 800px" }} style={{
+          maxWidth: "800px", // max to 800
+          minWidth: "0", // To stretch!
+          height: "100%",
+          width: "100%", // Not required, but can be useful
+        }}>
+          <Layout style={{ display: "flex", backgroundColor: "#fff", paddingLeft: "0px", border: "1px solid #f7f9f9"}}>
             <ProfileHeader/>
-            <Content style={{ margin: '0px 40px 0', overflow: 'initial', border: '1px solid #eff3f4' }}>
+            <Content>
               <div
                 style={{
-                  // marginTop: "0px",
-                  // padding: 24,
                   textAlign: 'left'
                 }}
                 className="content-tweet"
@@ -41,7 +49,6 @@ const App = () => {
                 <Post/>
                 <Divider/>
                 <Post/>
-                {/*<p>long content</p>*/}
               </div>
             </Content>
             <Footer style={{
@@ -53,7 +60,6 @@ const App = () => {
               justifyContent: "center",
               alignItems: "center",
               textAlign: "center"
-              // border: '1px solid #000',
             }}>
               <Row style={{
               }}>
@@ -64,7 +70,13 @@ const App = () => {
             </Footer>
           </Layout>
         </Col>
-        <Col style={{ flex: 1, height: "100%"}}>
+        <Col style={{
+          flex: 1,
+          height: "100%",
+          width: "100%",
+          // minWidth: "100%",
+          // minHeight: "100%"
+        }}>
           {/* Правое боковое меню */}
           <Layout style={{ width: "100%", backgroundColor: "#fff" }}>
             <SearchComponent/>

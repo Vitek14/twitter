@@ -22,7 +22,6 @@ const ProfileContent = () => {
     <div className="ProfileContent">
       {/*<img src="https://st4.depositphotos.com/7269304/24917/i/450/depositphotos_249175016-stock-photo-background-white-marble-pattern-wavy.jpg"/>*/}
       <Row style={{
-        border: "1px solid #000",
         width: "100%"
       }}>
         <Col flex="auto">
@@ -297,10 +296,7 @@ const ProfileContent = () => {
       <Row style={{
         position: "relative",
         top: "35px",
-        left: "50px",
-        marginRight: "30px",
         alignItems: 'center',
-        // border: "1px solid #000"
       }}>
         <Col>
           <Button
