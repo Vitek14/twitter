@@ -1,6 +1,5 @@
 import {Layout, Space, Row, Col, Avatar, Typography} from 'antd';
 import "./Menu.css"
-const {Header} = Layout;
 import {
   XOutlined,
   HomeOutlined,
@@ -21,13 +20,13 @@ import {
 import { Button } from 'antd';
 import {useState} from "react";
 
-const { Content, Footer, Sider } = Layout;
+const { Content, Header, Footer, Sider } = Layout;
 
 const { Text } = Typography;
 
 const FooterSide = () => {
   return (
-    <Footer style={{ display: 'flex', justifyContent: 'flex-start', background: "#fff", padding: 0 }}>
+    <Footer style={{ display: 'flex', justifyContent: 'flex-start', padding: 0 }}>
       <Row justify="space-between" gutter={[16, 16]}>
         <Col>
           <Avatar size={40} src="src/assets/Avatar.png"/>
@@ -55,23 +54,18 @@ const SideMenu = () => {
   };
 
   return (
-    <Sider width={400} style={{ position: 'fixed', background: "#ffffff"}}>
+    <Sider width={400} style={{ position: 'fixed' }}>
       <Layout
         style={{
           marginTop: 0,
           marginLeft: 60,
         }}
       >
-        <Header
-          style={{
-            background: "#fff"
-          }}
-        >
+        <Header>
           <XOutlined style={{fontSize: "24px", marginLeft: -30}}/>
         </Header>
         <Content
           style={{
-            background: "#fff",
             height: "100vh",
             padding: 20
           }}

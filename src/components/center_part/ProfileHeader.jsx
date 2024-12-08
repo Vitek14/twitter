@@ -6,7 +6,7 @@ import "./ProfileHeader.css"
 const Text = Typography;
 const ProfileHeader = () => {
   return (
-    <Header style={{ background: "#ffffff", padding: "0px" }}>
+    <Header style={{ padding: "0px" }}>
       <Space direction="horizontal" align={ "start" }>
         <Button color="default" variant="link" icon={<ArrowLeftOutlined
           style={{
