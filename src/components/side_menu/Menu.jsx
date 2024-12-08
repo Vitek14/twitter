@@ -1,6 +1,6 @@
 import {Layout, Space, Row, Col, Avatar, Typography} from 'antd';
-import "./side_menu.css"
-import {Header} from "antd/es/layout/layout.js";
+import "./Menu.css"
+const {Header} = Layout;
 import {
   XOutlined,
   HomeOutlined,

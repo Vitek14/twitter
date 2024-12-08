@@ -1,5 +1,5 @@
 import {Col, Divider, Layout, Row} from "antd";
-import SideMenu from "../components/side_menu/side_menu.jsx";
+import SideMenu from "../components/side_menu/Menu.jsx";
 import ProfileHeader from "../components/center_part/ProfileHeader.jsx";
 import ProfileContent from "../components/center_part/ProfileContent.jsx";
 import Post from "../components/center_part/Post.jsx";
