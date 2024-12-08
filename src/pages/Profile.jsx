@@ -77,7 +77,7 @@ const Profile = () => {
           // minHeight: "100%"
         }}>
           {/* Правое боковое меню */}
-          <Layout style={{ width: "100%", backgroundColor: "#fff" }}>
+          <Layout style={{ width: "100%", backgroundColor: "#fff", position: 'fixed' }}>
             <SearchComponent/>
             <TrendingPeople/>
             <TrendsRecommendation/>
