@@ -22,7 +22,6 @@ const ProfileContent = () => {
     <div className="ProfileContent">
       {/*<img src="https://st4.depositphotos.com/7269304/24917/i/450/depositphotos_249175016-stock-photo-background-white-marble-pattern-wavy.jpg"/>*/}
       <Row style={{
-        border: "1px solid #000",
         width: "100%"
       }}>
         <Col flex="auto">
@@ -44,11 +43,11 @@ const ProfileContent = () => {
           />
         </Col>
       </Row>
-      <Row gutter={8} style={{
+      <Row justify={"end"} gutter={8} style={{
         position: "relative",
         top: "-45px",
       }}>
-        <Col push={15} style={{  // TODO: Сделать адаптивные отступы
+        <Col style={{
           marginLeft: "15px"  // Добавляет отступ для того, чтобы было ближе к левой менюшке
         }}>
           <Button size="large" shape="circle" icon={<MoreOutlined style={{
@@ -61,7 +60,7 @@ const ProfileContent = () => {
 
             </Button>
         </Col>
-        <Col push={15}>
+        <Col>
           <Button size="large" shape="circle" icon={<MessageOutlined style={{
             fontSize: "24px"
           }}/>}
@@ -72,7 +71,9 @@ const ProfileContent = () => {
 
           </Button>
         </Col>
-        <Col push={15}>
+        <Col style={{
+          marginRight: "22px"
+        }}>
           <Button size="large" shape="round"
 
                   style={{
@@ -297,10 +298,7 @@ const ProfileContent = () => {
       <Row style={{
         position: "relative",
         top: "35px",
-        left: "50px",
-        marginRight: "30px",
         alignItems: 'center',
-        // border: "1px solid #000"
       }}>
         <Col>
           <Button

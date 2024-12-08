@@ -49,7 +49,7 @@ const Post = () => {
       <Row style={{
         position: "relative",
         top: "-50px",
-        left: "85px",
+        marginLeft: "85px",
       }}>
         <Col>
           <Text style={{
@@ -80,7 +80,8 @@ const Post = () => {
           </Text>
         </Col>
         <Col style={{
-          marginLeft: "400px",
+          marginLeft: "30vh",
+          alignItems: "end",
         }}>
           <MoreOutlined style={{
             fontSize: 15,

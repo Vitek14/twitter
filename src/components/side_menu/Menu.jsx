@@ -1,6 +1,6 @@
 import {Layout, Space, Row, Col, Avatar, Typography} from 'antd';
-import "./side_menu.css"
-import {Header} from "antd/es/layout/layout.js";
+import "./Menu.css"
+const {Header} = Layout;
 import {
   XOutlined,
   HomeOutlined,
@@ -18,8 +18,8 @@ import {
   MoreOutlined,
   CheckCircleTwoTone, CommentOutlined, CheckCircleOutlined, CheckCircleFilled
 } from "@ant-design/icons";
-import { Button, ConfigProvider } from 'antd';
-import {useEffect, useState} from "react";
+import { Button } from 'antd';
+import {useState} from "react";
 
 const { Content, Footer, Sider } = Layout;
 
@@ -48,49 +48,6 @@ const FooterSide = () => {
 };
 
 const SideMenu = () => {
-  const [config, setThemeConfig] = useState({
-    token: {
-      colorPrimary: '#00b96b',
-      borderRadius: 2,
-      contentFontSize: "20px"
-    },
-  });
-
-   useEffect(() => {
-    const updateTheme = () => {
-      if (window.innerWidth < 1366) {
-        setThemeConfig({
-          token: {
-            colorPrimary: '#00b96b',
-            borderRadius: 2,
-            fontSize: '12px',
-          },
-        });
-      } else {
-        setThemeConfig({
-          token: {
-            colorPrimary: '#00b96b',
-            borderRadius: 2,
-            fontSize: '24px',
-          },
-        });
-      }
-    };
-
-    window.addEventListener('resize', updateTheme);
-    updateTheme();
-
-    return () => window.removeEventListener('resize', updateTheme);
-  }, []);
-//   const config = {
-//   components: {
-//     Button: {
-//       defaultActiveColor: '#ff1818',
-//       defaultBg: "#000",
-//       contentFontSize: "50px"
-//     },
-//   },
-// };
   const [isActive, setIsActive] = useState(null);
 
   const handleButtonClick = (buttonIndex) => {
@@ -122,11 +79,11 @@ const SideMenu = () => {
 
           {/*    Далее идут кнопки*/}
           <Space direction="vertical" size={[0, 20]} style={{marginBottom: 20, marginLeft: -13}}>
-            <ConfigProvider theme={config}>
-              <Button color="default" variant="link" icon={isActive === 1 ? <HomeFilled/> : <HomeOutlined/>}>
-                Home
-              </Button>
-            </ConfigProvider>
+            <Button color="default" variant="link" icon={isActive === 1 ? <HomeFilled/> : <HomeOutlined/>}
+                    className={`side-buttons ${isActive === 1 ? 'active' : ''}`}
+                    onClick={() => handleButtonClick(1)}>
+              Home
+            </Button>
             <Button color="default" variant="link" icon={isActive === 2 ? <SearchOutlined/> : <SearchOutlined/>}
                     className={`side-buttons ${isActive === 2 ? 'active' : ''}`}
                     onClick={() => handleButtonClick(2)}>

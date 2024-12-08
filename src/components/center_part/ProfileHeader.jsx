@@ -6,8 +6,8 @@ import "./ProfileHeader.css"
 const Text = Typography;
 const ProfileHeader = () => {
   return (
-    <Header style={{ background: "#ffffff" }}>
-      <Space direction="horizontal">
+    <Header style={{ background: "#ffffff", padding: "0px" }}>
+      <Space direction="horizontal" align={ "start" }>
         <Button color="default" variant="link" icon={<ArrowLeftOutlined
           style={{
             fontSize: "20px"
@@ -16,7 +16,6 @@ const ProfileHeader = () => {
                 className="profile-headers">
         </Button>
         <Space direction="vertical" size={0} style={{
-          marginLeft: 20,
           display: "flex",
           flexDirection: "column",
           alignItems: "flex-start"}}>
