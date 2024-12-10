@@ -1,10 +1,10 @@
 import './App.css'
-import Profile from "./pages/Profile.jsx";
+import ProfilePage from "./pages/ProfilePage.jsx";
 
 const App = () => {
 
   return (
-    <Profile/>
+    <ProfilePage/>
   )
 }
 
