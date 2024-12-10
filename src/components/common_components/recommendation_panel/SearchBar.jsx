@@ -3,7 +3,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import {useState} from "react";
 
 
-const SearchComponent = () => {
+const SearchBar = () => {
   const [isFocused, setIsFocused] = useState(false);
   const [searchText, setSearchText] = useState('Search');
 
@@ -82,4 +82,4 @@ const SearchComponent = () => {
   );
 };
 
-export default SearchComponent;
+export default SearchBar;

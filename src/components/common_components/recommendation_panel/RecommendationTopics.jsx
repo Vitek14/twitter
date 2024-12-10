@@ -10,7 +10,7 @@ const trends = [
   { key: '6', trendType: 'Technology · Trending', trendName: "#figma", popularityCount: "4,377 posts" }
 ];
 
-const TrendsRecommendation = () => {
+const RecommendationTopics = () => {
   return (
     <div style={{
       marginTop: "16px",
@@ -63,4 +63,4 @@ const TrendsRecommendation = () => {
   );
 }
 
-export default TrendsRecommendation;
+export default RecommendationTopics;

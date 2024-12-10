@@ -11,7 +11,7 @@ const items = [
   { key: '6', img: 'src/assets/avatars/gleb.png', text: 'Gleb Sharapo', secondText: "@sharapogleb", button: 'Test' },
 ];
 
-const TrendingPeople = () => {
+const RecommendationPeople = () => {
   const [visibleItems, setVisibleItems] = useState(3);
 
   const showMore = () => {
@@ -102,4 +102,4 @@ const TrendingPeople = () => {
 
 };
 
-export default TrendingPeople;
+export default RecommendationPeople;
