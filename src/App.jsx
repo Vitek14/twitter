@@ -1,15 +1,11 @@
-import { useState } from 'react'
 import './App.css'
-import UserPage from "./components/user_page/UserPage.jsx";
+import Profile from "./pages/Profile.jsx";
 
-function App() {
-  const [count, setCount] = useState(222)
+const App = () => {
 
   return (
-    <>
-      <UserPage/>
-    </>
+    <Profile/>
   )
 }
 
-export default App
+export default App;
