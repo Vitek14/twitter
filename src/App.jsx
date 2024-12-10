@@ -1,11 +1,18 @@
 import './App.css'
+import ReactDOM from 'react-dom/client'
 import ProfilePage from "./pages/ProfilePage.jsx";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-const App = () => {
 
-  return (
-    <ProfilePage/>
-  )
-}
+const router = createBrowserRouter([{
+  path: "/",
+  element: <ProfilePage />,
+}])
 
-export default App;
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <RouterProvider router={router}/>
+)
+
+// export default App;
+//
