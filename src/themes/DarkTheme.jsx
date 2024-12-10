@@ -6,10 +6,9 @@ const darkTheme =
   token: {
     colorBgBase: "#15202B",
     components: {
-      Row: {
-        colorPrimary: "#000"
-      },
-
+      Layout: {
+        colorBgLayout: "#ffffff",
+      }
     }
   },
 };

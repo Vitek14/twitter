@@ -1,10 +1,15 @@
-import { theme } from 'antd';
+import {ConfigProvider, theme} from 'antd';
 
 const lightTheme = {
   algorithm: theme.defaultAlgorithm,
   token: {
-    colorPrimary: '#000000',
-    colorBgContainer: '#ffffff',
+    components: {
+      Layout: {
+        colorBgHeader: "black",
+        colorBgBody: "skyblue"
+      }
+    },
+    colorBgBase: "#ffffff",
   },
 };
 

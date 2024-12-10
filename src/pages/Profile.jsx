@@ -1,11 +1,11 @@
 import {Col, Divider, Layout, Row} from "antd";
-import SideMenu from "../components/side_menu/Menu.jsx";
 import ProfileHeader from "../components/center_part/ProfileHeader.jsx";
 import ProfileContent from "../components/center_part/ProfileContent.jsx";
 import Post from "../components/center_part/Post.jsx";
 import SearchComponent from "../components/trending/Search.jsx";
 import TrendingPeople from "../components/trending/TrendingPeople.jsx";
 import TrendsRecommendation from "../components/trending/TrendsRecommendation.jsx";
+import ControlPanel from "../components/common_components/control_panel/ControlPanel.jsx";
 
 const Profile = () => {
 
@@ -23,7 +23,7 @@ const Profile = () => {
           height: "100%",
           width: "100%", // Not required, but can be useful
         }}>
-          <SideMenu/>
+          <ControlPanel/>
         </Col>
         <Col xs={3} sm={5} md={9} lg={{ flex: "0 0 500px" }} xl={{ flex: "0 0 700px" }} xxl={{ flex: "0 0 800px" }} style={{
           maxWidth: "800px", // max to 800

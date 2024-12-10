@@ -48,12 +48,6 @@ const FooterSide = () => {
 };
 
 const SideMenu = () => {
-  const [isActive, setIsActive] = useState(null);
-
-  const handleButtonClick = (buttonIndex) => {
-    setIsActive(buttonIndex);
-  };
-
   return (
     <Sider width={400} style={{ position: 'fixed', background: "#ffffff"}}>
       <Layout
