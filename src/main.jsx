@@ -21,7 +21,7 @@ const router = createBrowserRouter([
     element: <HomePage />
   },
   {
-    path: "/messages",
+    path: "/message",
     element: <MessagePage />
   }
 ])

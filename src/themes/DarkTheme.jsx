@@ -5,11 +5,7 @@ const darkTheme =
   algorithm: theme.darkAlgorithm,
   token: {
     colorBgBase: "#15202B",
-    components: {
-      Layout: {
-        colorBgLayout: "#ffffff",
-      }
-    }
+    colorBgContainer: "#15202B"
   },
 };
 

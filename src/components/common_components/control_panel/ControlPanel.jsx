@@ -1,4 +1,4 @@
-import {ConfigProvider, Layout} from "antd";
+import {ConfigProvider, Layout, theme} from "antd";
 import ApplicationLogo from "./components/ApplicationLogo.jsx";
 import NavBar from "./components/NavBar.jsx";
 import ProfileBar from "./components/ProfileBar.jsx";
@@ -7,8 +7,11 @@ import NewPostButton from "./components/NewPostButton.jsx";
 const { Header, Sider, Content, Footer } = Layout;
 
 const ControlPanel = () => {
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
   return (
-    <Sider width={400} style={{ position: 'fixed', backgroundColor: "#fff" }}>
+    <Sider width={400} style={{ backgroundColor: colorBgContainer }}>
       <Layout
         style={{
           marginTop: 0,
