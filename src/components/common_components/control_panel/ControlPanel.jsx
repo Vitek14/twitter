@@ -16,12 +16,12 @@ const ControlPanel = () => {
         style={{
           marginTop: 0,
           marginLeft: 60,
-          backgroundColor: "#fff"
+          backgroundColor: colorBgContainer
         }}
       >
       {/*  Here will be all components*/}
         <Header style={{
-          background: "#fff",
+          background: colorBgContainer,
         }}>
           <ApplicationLogo/>
         </Header>
@@ -36,7 +36,7 @@ const ControlPanel = () => {
           <NewPostButton/>
 
           {/* TODO: This shouldn't be heere*/}
-          <Footer style={{ display: 'flex', justifyContent: 'flex-start', padding: 0, backgroundColor: "#fff" }}>
+          <Footer style={{ display: 'flex', justifyContent: 'flex-start', padding: 0, backgroundColor: colorBgContainer }}>
             <ProfileBar/>
           </Footer>
         </Content>
