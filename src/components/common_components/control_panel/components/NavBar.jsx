@@ -17,11 +17,21 @@ import {
 } from "@ant-design/icons";
 import {useState} from "react";
 import "./NavBar.css"
+import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
   const [isActive, setIsActive] = useState(null);
+  const navigate = useNavigate();
 
   const handleButtonClick = (buttonIndex) => {
+    switch (buttonIndex) {
+      case 4:
+        navigate("/message");
+        break;
+      case 9:
+        navigate("/profile");
+        break;
+    }
     setIsActive(buttonIndex);
   };
 
