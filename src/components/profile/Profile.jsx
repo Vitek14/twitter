@@ -3,6 +3,8 @@ import Overview from "./components/Overview.jsx";
 import Banner from "./components/Banner.jsx";
 import Bio from "./components/Bio.jsx";
 import ContentTabs from "./components/ContentTabs.jsx";
+import Post from "./components/Post.jsx";
+import data from "../../data/data.json"
 
 const {Content, Footer} = Layout
 
@@ -31,6 +33,20 @@ const Profile = () => {
         <Bio/>
         <Content>
           <ContentTabs/>
+          {data.posts.map((post, key) => {
+            const user = data.users.find(u => u.id === post.user_id);
+            return(
+              <Post
+              key={key}
+              content={post.content}
+              image={post.image}
+              post_id={post.id}
+              username={user.first_name + " " + user.last_name}
+              user_tag={user.user_name}
+              publish_date={post.date}
+              />
+            )
+          })}
         </Content>
       </div>
       <Footer style={{

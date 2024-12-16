@@ -5,7 +5,6 @@ import RecommendationPanel from "../components/common_components/recommendation_
 
 const ProfilePage = () => {
 
-  const { Content, Footer } = Layout;
   return (
     <Layout
       style={{
