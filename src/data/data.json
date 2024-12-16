@@ -1,0 +1,219 @@
+{
+  "profile": {
+    "id": 144,
+    "first_name": "Stas",
+    "last_name": "Neprokin",
+    "user_name": "sneprokin",
+    "description": "Designing Products that Users Love",
+    "workplace": "Enterpreneur",
+    "location": "Earth",
+    "linked_website": "neprokin.com",
+    "birthdate": "November 7, 1987",
+    "joined_at": "November 2010"
+  },
+
+  "my_posts": [
+    {
+      "id": 2,
+      "title": "Post 2",
+      "content": "Content 2",
+      "date": "1999-09-21",
+      "reposts_count": 1251,
+      "views_count": 1251,
+      "likes_count": 1251,
+      "comments_count": 1251
+    },
+    {
+      "id": 5,
+      "title": "Post 5",
+      "content": "Content 5",
+      "date": "1999-09-11",
+      "reposts_count": 1245,
+      "views_count": 543,
+      "likes_count": 321,
+      "comments_count": 1251
+    }
+  ],
+
+  "post_comments": {
+    "2": [
+      {
+        "id": 1,
+        "content": "Comment 1"
+      },
+      {
+        "id": 2,
+        "content": "Comment 2"
+      }
+    ],
+    "5": [
+      {
+        "id": 13,
+        "content": "Comment 3"
+      },
+      {
+        "id": 25,
+        "content": "Comment 4"
+      }
+    ]
+  },
+
+  "post_reposts": {
+    "2": [
+      {
+        "id": 1,
+        "user_id": 1
+      },
+      {
+        "id": 2,
+        "user_id": 2
+      }
+    ],
+    "5": [
+      {
+        "id": 13,
+        "user_id": 1
+      },
+      {
+        "id": 25,
+        "user_id": 2
+      }
+    ]
+  },
+
+  "users": [
+    {
+      "id": 1,
+      "first_name": "Nikita",
+      "last_name": "B",
+      "user_name": "gkjlsdngkjds"
+    },
+    {
+      "id": 2,
+      "first_name": "Nikita",
+      "last_name": "B",
+      "user_name": "gkjlsdngkjds"
+    },
+    {
+      "id": 13,
+      "first_name": "Nikita",
+      "last_name": "B",
+      "user_name": "gkjlsdngkjds"
+    },
+    {
+      "id": 25,
+      "first_name": "Nikita",
+      "last_name": "B",
+      "user_name": "gkjlsdngkjds"
+    }
+  ],
+
+  "posts": [
+    {
+      "id": 2,
+      "title": "Post 2",
+      "content": "Content 2",
+      "date": "1999-09-21",
+      "reposts_count": 1251,
+      "views_count": 1251,
+      "likes_count": 1251,
+      "comments_count": 1251
+    },
+    {
+      "id": 5,
+      "title": "Post 5",
+      "content": "Content 5",
+      "date": "1999-09-11",
+      "reposts_count": 1245,
+      "views_count": 543,
+      "likes_count": 321,
+      "comments_count": 1251
+    },
+    {
+      "id": 13,
+      "title": "Post 13",
+      "content": "Content 13",
+      "date": "1999-09-11",
+      "reposts_count": 1245,
+      "views_count": 543,
+      "likes_count": 321,
+      "comments_count": 1251
+    },
+    {
+      "id": 25,
+      "title": "Post 25",
+      "content": "Content 25",
+      "date": "1999-09-11",
+      "reposts_count": 1245,
+      "views_count": 543,
+      "likes_count": 321,
+      "comments_count": 1251
+    },
+    {
+      "id": 1,
+      "title": "Post 1",
+      "content": "Content 1",
+      "date": "1999-09-11",
+      "reposts_count": 1245,
+      "views_count": 543,
+      "likes_count": 321,
+      "comments_count": 1251
+    }
+  ],
+
+  "trends": [
+    {
+      "name": "Trending in Belarus",
+      "posts": [ 2, 5, 13, 25, 1 ]
+    },
+    {
+      "name": "Trending in Russia",
+      "posts": [ 2, 5, 13, 25, 1 ]
+    },
+    {
+      "name": "Trending in Ukraine",
+      "posts": [ 2, 5, 13, 25, 1 ]
+    },
+    {
+      "name": "Trending in USA",
+      "posts": [ 2, 5, 13, 25, 1 ]
+    }
+  ],
+
+  "recommendations": [ 1, 2, 13, 25 ],
+
+  "chats": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "messages": [
+        {
+          "id": 1,
+          "user_id": 1,
+          "content": "Message 1"
+        },
+        {
+          "id": 2,
+          "user_id": 2,
+          "content": "Message 2"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "user_id": 13,
+      "messages": [
+        {
+          "id": 3,
+          "user_id": 2,
+          "content": "Message 3"
+        },
+        {
+          "id": 4,
+          "user_id": 13,
+          "content": "Message 4"
+        }
+      ]
+    }
+  ]
+}
