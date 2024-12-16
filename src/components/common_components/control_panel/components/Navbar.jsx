@@ -16,10 +16,10 @@ import {
   SearchOutlined, UserOutlined
 } from "@ant-design/icons";
 import {useState} from "react";
-import "./NavBar.css"
+import "./navbar.css"
 import { useNavigate } from "react-router-dom";
 
-const NavBar = () => {
+const Navbar = () => {
   const [isActive, setIsActive] = useState(null);
   const navigate = useNavigate();
 
@@ -92,4 +92,4 @@ const NavBar = () => {
   )
 }
 
-export default NavBar;
+export default Navbar;
