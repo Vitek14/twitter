@@ -1,6 +1,6 @@
 import {Button, Space, Typography, Layout} from "antd";
 import {ArrowLeftOutlined, CheckCircleTwoTone } from "@ant-design/icons";
-import "./Overview.css"
+import "./overview.scss"
 
 const { Header } = Layout;
 const Text = Typography;
