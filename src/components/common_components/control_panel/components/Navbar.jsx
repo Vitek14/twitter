@@ -25,6 +25,9 @@ const Navbar = () => {
 
   const handleButtonClick = (buttonIndex) => {
     switch (buttonIndex) {
+      case 1:
+        navigate("/home");
+        break;
       case 4:
         navigate("/message");
         break;
