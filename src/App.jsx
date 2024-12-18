@@ -1,4 +1,4 @@
-import './App.css'
+import './app.scss'
 import ProfilePage from "./pages/ProfilePage.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import MessagePage from "./pages/MessagePage.jsx";
