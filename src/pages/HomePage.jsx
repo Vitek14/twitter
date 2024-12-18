@@ -1,8 +1,12 @@
+import {Layout} from "antd";
+
 const HomePage = () => {
   return (
-      <p>
-        Home page goes here...
-      </p>
+    <>
+      <Layout>
+
+      </Layout>
+    </>
   )
 }
 

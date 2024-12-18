@@ -1,9 +1,9 @@
-import {Avatar, Button, Col, Image, Row, Typography} from "antd";
-import {Header} from "antd/es/layout/layout.js";
+import {Avatar, Col, Image, Row, Typography} from "antd";
 import { CheckCircleTwoTone, MoreOutlined, RetweetOutlined} from "@ant-design/icons";
 
 const Text = Typography;
-const Post = ({content, image, post_id, username, user_tag, publish_date}) => {
+const Post = (Props) => {
+  const {content, image, post_id, username, user_tag, publish_date} = Props
   return (
     <div className="post" style={{
       position: "relative",
