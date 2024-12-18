@@ -1,0 +1,9 @@
+.side-buttons {
+  font-family: Inter, sans-serif;
+  font-size: 24px;
+  border: none;
+  &.active {
+    font-weight: bold;
+    color: black;
+  }
+}

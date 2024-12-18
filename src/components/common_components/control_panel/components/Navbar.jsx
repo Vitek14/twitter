@@ -16,7 +16,7 @@ import {
   SearchOutlined, UserOutlined
 } from "@ant-design/icons";
 import {useState} from "react";
-import "./navbar.css"
+import "./navbar.scss"
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
