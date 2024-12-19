@@ -2,9 +2,9 @@ import { ConfigProvider, Layout, theme} from "antd";
 import ControlPanel from "../components/common_components/control_panel/ControlPanel.jsx";
 import { Tabs } from 'antd';
 import LightTheme from "../themes/LightTheme.jsx";
-import TabPane from "antd/es/tabs/TabPane.js";
 
-const { Sider, Header } = Layout;
+const { Header } = Layout;
+const {TabPane} = Tabs;
 
 const HomePage = () => {
   const {
