@@ -1,4 +1,5 @@
 import {Tabs} from "antd";
+const {TabPane} = Tabs;
 
 const ContentTabs = () => {
   return (
@@ -14,3 +15,4 @@ const ContentTabs = () => {
   )
 }
 
+export default ContentTabs;
