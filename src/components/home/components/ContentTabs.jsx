@@ -5,7 +5,7 @@ const ContentTabs = () => {
   return (
     <Tabs
       defaultActiveKey="1"
-      tabBarGutter={300}
+      tabBarGutter={"15vw"}
     >
       <TabPane tab="For you" key="1">
       </TabPane>

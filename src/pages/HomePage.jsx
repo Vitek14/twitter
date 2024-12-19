@@ -3,6 +3,7 @@ import ControlPanel from "../components/common_components/control_panel/ControlP
 import { Tabs } from 'antd';
 import LightTheme from "../themes/LightTheme.jsx";
 import Home from "../components/home/Home.jsx";
+import DarkTheme from "../themes/DarkTheme.jsx";
 
 const { Header } = Layout;
 const {TabPane} = Tabs;

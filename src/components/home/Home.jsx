@@ -10,12 +10,12 @@ const Home = () => {
   } = theme.useToken();
 
   return (
-    <Layout>
-      <Header style={{ backgroundColor: colorBgContainer, width: "600px", display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <Layout style={{ maxWidth: "600px" }}>
+      <Header style={{ backgroundColor: colorBgContainer, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <ContentTabs/>
       </Header>
       <Content style={{ backgroundColor: colorBgContainer }}>
-        <NewPost profile_image={data.profile_image} />
+        <NewPost profile_image={data.profile.avatar} />
       </Content>
     </Layout>
   )
