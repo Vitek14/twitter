@@ -1,11 +1,34 @@
-import {Layout} from "antd";
+import { ConfigProvider, Layout, theme} from "antd";
+import ControlPanel from "../components/common_components/control_panel/ControlPanel.jsx";
+import { Tabs } from 'antd';
+import LightTheme from "../themes/LightTheme.jsx";
+import TabPane from "antd/es/tabs/TabPane.js";
+
+const { Sider, Header } = Layout;
 
 const HomePage = () => {
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
+
   return (
     <>
-      <Layout>
-
-      </Layout>
+      <ConfigProvider theme={LightTheme}>
+        <Layout style={{ display: "flex", minHeight: '100vh' }}>
+          <ControlPanel />
+          <Header style={{ backgroundColor: colorBgContainer, width: "600px", display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <Tabs
+                defaultActiveKey="1"
+                tabBarGutter={300}
+              >
+                  <TabPane tab="For you" key="1">
+                  </TabPane>
+                  <TabPane tab="Following" key="2">
+                  </TabPane>
+                </Tabs>
+          </Header>
+        </Layout>
+      </ConfigProvider>
     </>
   )
 }
