@@ -1,0 +1,23 @@
+.profile {
+  .profile-headers {
+    font-family: Inter, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+  }
+
+  .custom-button {
+    border: none;
+    background: none;
+    color: grey;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+
+  .custom-button.selected {
+    border-bottom: 2px solid blue;
+    color: black;
+  }
+}
