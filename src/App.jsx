@@ -3,6 +3,11 @@ import ProfilePage from "./pages/ProfilePage.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import MessagePage from "./pages/MessagePage.jsx";
 import {createBrowserRouter, Navigate, RouterProvider} from "react-router-dom";
+import React from "react";
+import LightTheme from "./themes/LightTheme.jsx";
+import {ConfigProvider, FloatButton} from "antd";
+import DarkTheme from "./themes/DarkTheme.jsx";
+import BedtimeIcon from '@mui/icons-material/Bedtime';
 
 const router = createBrowserRouter([
   {
@@ -25,8 +30,21 @@ const router = createBrowserRouter([
 ])
 
 const App = () => {
+  const [currentTheme, setCurrentTheme] = React.useState(LightTheme);
   return (
-    <RouterProvider router={router}/>
+    <ConfigProvider theme={currentTheme}>
+      <RouterProvider router={router}/>
+
+      {/* Changing theme*/}
+      <FloatButton icon={<BedtimeIcon/>} onClick={() => {
+        if (currentTheme === DarkTheme) {
+          setCurrentTheme(LightTheme);
+        }
+        else {
+          setCurrentTheme(DarkTheme);
+        }
+      }} />
+    </ConfigProvider>
   )
 }
 
