@@ -1,18 +1,15 @@
-import {ConfigProvider, Layout, theme} from "antd";
+import { Layout, theme} from "antd";
 import ControlPanel from "../components/common_components/control_panel/ControlPanel.jsx";
 import Message from "../components/message/Message.jsx";
-import LightTheme from "../themes/LightTheme.jsx";
-import DarkTheme from "../themes/DarkTheme.jsx";
 import Select from "../components/message/components/Select.jsx";
 
-const { Sider, Content, Header } = Layout
+const { Sider } = Layout
 
 const MessagePage = () => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
   return (
-    <ConfigProvider theme={LightTheme}>
       <Layout style={{ display: "flex", minHeight: '100vh' }}>
         <ControlPanel/>
         <Message/>
@@ -23,7 +20,6 @@ const MessagePage = () => {
           <Select/>
         </Sider>
       </Layout>
-    </ConfigProvider>
   )
 }
 
