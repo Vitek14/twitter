@@ -1,4 +1,4 @@
-import {Avatar, Col, Divider, Layout, Row} from "antd";
+import {Avatar, Col, Divider, Layout, Row, theme} from "antd";
 import Overview from "./components/Overview.jsx";
 import Banner from "./components/Banner.jsx";
 import Bio from "./components/Bio.jsx";
@@ -10,7 +10,7 @@ const {Content, Footer} = Layout
 
 const Profile = () => {
   return (
-    <Layout className="profile" style={{display: "flex", backgroundColor: "#fff", paddingLeft: "0px", border: "1px solid #f7f9f9"}}>
+    <Layout className="profile" style={{display: "flex", paddingLeft: "0px", border: "1px solid #f7f9f9"}}>
       <Overview/>
       <div className="ProfileContent">
         <Row style={{
@@ -49,7 +49,6 @@ const Profile = () => {
         position: "relative",
         left: "40px",
         marginRight: "660px",
-        backgroundColor: "#fff",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
