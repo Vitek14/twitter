@@ -1,9 +1,9 @@
 import {Avatar, Col, Image, Row, Typography} from "antd";
 import { CheckCircleTwoTone, MoreOutlined, RetweetOutlined} from "@ant-design/icons";
 
-const Text = Typography;
-const Post = (Props) => {
-  const {content, image, post_id, username, user_tag, publish_date} = Props
+const { Text } = Typography;
+
+const Post = ({post, user}) => {
   return (
     <div className="post" style={{
       position: "relative",
@@ -56,7 +56,7 @@ const Post = (Props) => {
             fontSize: 15,
             marginRight: "5px",
           }}>
-            {username}
+            {user.first_name + " " + user.last_name}
           </Text>
         </Col>
         <Col>
@@ -74,7 +74,7 @@ const Post = (Props) => {
             marginRight: "5px",
             color: "#536471"
           }}>
-            @{user_tag} · {publish_date}
+            @{user.user_name} · {post.date}
           </Text>
         </Col>
         <Col style={{
@@ -99,7 +99,7 @@ const Post = (Props) => {
             fontFamily: "Inter, sans-serif",
             fontSize: 15,
           }}>
-            {content}
+            {post.content}
           </Text>
         </Col>
       </Row>
@@ -109,7 +109,7 @@ const Post = (Props) => {
         left: "85px",
         marginRight: "200px",
       }}>
-        <Image style={{ borderRadius: '10px' }} src={image}/>
+        <Image style={{ borderRadius: '10px' }} src={post.image}/>
       </Row>
     </div>
   )
