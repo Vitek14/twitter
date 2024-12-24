@@ -1,4 +1,4 @@
-import {Avatar, Col, Divider, Layout, Row, theme} from "antd";
+import {Avatar, Col, Layout, Row} from "antd";
 import Overview from "./components/Overview.jsx";
 import Banner from "./components/Banner.jsx";
 import Bio from "./components/Bio.jsx";
@@ -11,23 +11,18 @@ const {Content, Footer} = Layout
 
 const Profile = () => {
   return (
-    <Layout className="profile" style={{display: "flex", paddingLeft: "0px", border: "1px solid #f7f9f9"}}>
+    <Layout className="profile">
       <Overview/>
       <div className="ProfileContent">
-        <Row style={{
-          width: "100%"
-        }}>
+        <Row>
           <Col flex="auto">
             <Banner/>
           </Col>
           <Col>
           <Avatar
+            className="profile-avatar"
             size={132}
             src="src/assets/Avatar.png"
-            style={{
-              marginTop: "-80px",
-              marginLeft: "20px",
-            }}
           />
         </Col>
         </Row>
@@ -46,15 +41,7 @@ const Profile = () => {
           })}
         </Content>
       </div>
-      <Footer style={{
-        position: "relative",
-        left: "40px",
-        marginRight: "660px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        textAlign: "center"
-      }}>
+      <Footer>
         <Row style={{}}>
           <Col>
             Дальше ничего нет
