@@ -55,11 +55,6 @@ const NewPost = (Props) => {
             <Button type={"text"} shape="circle" icon={<LocationOnOutlinedIcon style={{ color: "#0ba4ff" }} />} />
           </Tooltip>
         </Col>
-        <Col style={{ display: "flex", flex: "content", alignItems: "end", alignContent: "end", alignSelf: "end"}}>
-          <Tooltip title="Location" mouseEnterDelay={0.3} placement={"bottom"}>
-            <Button style={{ display: "flex", alignItems: "end", alignSelf: "end"}} type={"text"} shape="circle" icon={<LocationOnOutlinedIcon style={{ color: "#0ba4ff" }} />} />
-          </Tooltip>
-        </Col>
       </Row>
     </div>
   )
