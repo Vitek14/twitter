@@ -1,9 +1,6 @@
-import {ConfigProvider, Layout, theme} from "antd";
+import { Layout, theme} from "antd";
 import Bar from "./components/Bar.jsx";
-import {useContext} from "react";
 import Inbox from "./components/Inbox.jsx";
-import Sider from "antd/es/layout/Sider.js";
-import Select from "./components/Select.jsx";
 
 const { Header, Content } = Layout;
 
