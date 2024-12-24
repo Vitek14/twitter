@@ -1,7 +1,6 @@
 import {Avatar, Button, Col, Divider, Image, Row, Typography} from "antd";
 import {useState} from "react";
 import {CheckCircleTwoTone, MoreOutlined, RetweetOutlined} from "@ant-design/icons";
-import "./ContentTabs.css"
 
 const Text = Typography.Text;
 

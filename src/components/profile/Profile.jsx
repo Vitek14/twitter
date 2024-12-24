@@ -5,6 +5,7 @@ import Bio from "./components/Bio.jsx";
 import ContentTabs from "./components/ContentTabs.jsx";
 import Post from "./components/Post.jsx";
 import data from "../../data/data.json"
+import "./profile.scss"
 
 const {Content, Footer} = Layout
 
