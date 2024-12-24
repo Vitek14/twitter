@@ -1,8 +1,8 @@
-import {Col, ConfigProvider, Row, Typography} from "antd";
+import {Col, Row, Typography} from "antd";
 import SettingsIcon from '@mui/icons-material/Settings';
 import MessageIcon from '@mui/icons-material/Message';
 
-const { Text, Title } = Typography
+const { Title } = Typography
 
 const MessageBar = () => {
   return (
