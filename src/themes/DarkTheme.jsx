@@ -7,6 +7,14 @@ const darkTheme =
     colorBgBase: "#15202B",
     colorBgContainer: "#15202B"
   },
+  components: {
+    Layout: {
+      bodyBg: "#15202B",
+      headerBg: "#15202B",
+      siderBg: "#15202B",
+      footerBg: "#15202B"
+    },
+  }
 };
 
 export default darkTheme;
