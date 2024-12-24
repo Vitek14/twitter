@@ -1,4 +1,4 @@
-import {Layout, theme} from "antd";
+import {Layout} from "antd";
 import ApplicationLogo from "./components/ApplicationLogo.jsx";
 import Navbar from "./components/Navbar.jsx";
 import ProfileBar from "./components/ProfileBar.jsx";
@@ -6,22 +6,16 @@ import NewPostButton from "./components/NewPostButton.jsx";
 const { Header, Sider, Content, Footer } = Layout;
 
 const ControlPanel = () => {
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
   return (
-    <Sider width={400} style={{ backgroundColor: colorBgContainer }}>
+    <Sider width={400}>
       <Layout
         style={{
           marginTop: 0,
           marginLeft: 60,
-          backgroundColor: colorBgContainer
         }}
       >
       {/*  Here will be all components*/}
-        <Header style={{
-          background: colorBgContainer,
-        }}>
+        <Header>
           <ApplicationLogo/>
         </Header>
 
@@ -35,7 +29,7 @@ const ControlPanel = () => {
           <NewPostButton/>
 
           {/* TODO: This shouldn't be heere*/}
-          <Footer style={{ display: 'flex', justifyContent: 'flex-start', padding: 0, backgroundColor: colorBgContainer }}>
+          <Footer style={{ display: 'flex', justifyContent: 'flex-start', padding: 0 }}>
             <ProfileBar/>
           </Footer>
         </Content>
