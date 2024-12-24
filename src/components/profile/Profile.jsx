@@ -10,7 +10,7 @@ const {Content, Footer} = Layout
 
 const Profile = () => {
   return (
-    <Layout style={{display: "flex", backgroundColor: "#fff", paddingLeft: "0px", border: "1px solid #f7f9f9"}}>
+    <Layout className="profile" style={{display: "flex", backgroundColor: "#fff", paddingLeft: "0px", border: "1px solid #f7f9f9"}}>
       <Overview/>
       <div className="ProfileContent">
         <Row style={{
@@ -34,16 +34,12 @@ const Profile = () => {
         <Content>
           <ContentTabs/>
           {data.posts.map((post, key) => {
-            const user = data.users.find(u => u.id === post.user_id);
+            // const user = data.users.find(u => u.id === post.user_id);
             return(
               <Post
-              key={key}
-              content={post.content}
-              image={post.image}
-              post_id={post.id}
-              username={user.first_name + " " + user.last_name}
-              user_tag={user.user_name}
-              publish_date={post.date}
+                key={key}
+                post={post}
+                user={data.users.find(u => u.id === post.user_id)}
               />
             )
           })}
