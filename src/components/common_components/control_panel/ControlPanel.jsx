@@ -1,8 +1,7 @@
-import {ConfigProvider, Layout, theme} from "antd";
+import {Layout, theme} from "antd";
 import ApplicationLogo from "./components/ApplicationLogo.jsx";
 import Navbar from "./components/Navbar.jsx";
 import ProfileBar from "./components/ProfileBar.jsx";
-import lightTheme from "../../../themes/LightTheme.jsx";
 import NewPostButton from "./components/NewPostButton.jsx";
 const { Header, Sider, Content, Footer } = Layout;
 
