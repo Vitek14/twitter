@@ -1,4 +1,4 @@
-import {Avatar, Layout, Tabs, theme} from "antd";
+import { Layout, theme} from "antd";
 import ContentTabs from "./components/ContentTabs.jsx";
 const { Header, Content } = Layout;
 import data from "../../data/data.json"
