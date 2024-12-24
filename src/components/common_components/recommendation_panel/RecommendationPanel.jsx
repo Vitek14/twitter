@@ -6,7 +6,7 @@ import RecommendationTopics from "./RecommendationTopics.jsx";
 
 const RecommendationPanel = () => {
   return (
-    <Layout style={{ width: "100%", backgroundColor: "#fff", position: 'fixed' }}>
+    <Layout style={{ width: "100%", position: 'fixed' }}>
       <SearchBar/>
       <RecommendationPeople/>
       <RecommendationTopics/>
