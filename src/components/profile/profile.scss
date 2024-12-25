@@ -1,5 +1,5 @@
 .profile {
-  .profile-avatar {
+  &__avatar {
     margin-top: -80px;
     margin-left: 20px;
   }
@@ -23,5 +23,38 @@
   .custom-button.selected {
     border-bottom: 2px solid blue;
     color: black;
+  }
+}
+
+.post {
+  position: relative;
+  top: 15px;
+  margin-right: 25px;
+
+  // This stands for Nickname, tag and post publish date
+  &__info-row {
+    position: relative;
+    left: 17px;
+    display: flex;
+  }
+  &__info-col {
+    margin-right: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__retweet-icon {
+    font-size: 15px;
+    color: #536471;
+    margin-left: 40px;
+    margin-right: 4px;
+  }
+
+  &__reposted-text {
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    margin-right: 5px;
+    color: #536471;
   }
 }

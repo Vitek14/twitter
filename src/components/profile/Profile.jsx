@@ -13,14 +13,14 @@ const Profile = () => {
   return (
     <Layout className="profile">
       <Overview/>
-      <div className="ProfileContent">
+      <div className="profile__content">
         <Row>
           <Col flex="auto">
             <Banner/>
           </Col>
           <Col>
           <Avatar
-            className="profile-avatar"
+            className="profile__avatar"
             size={132}
             src="src/assets/Avatar.png"
           />
@@ -42,7 +42,7 @@ const Profile = () => {
         </Content>
       </div>
       <Footer>
-        <Row style={{}}>
+        <Row>
           <Col>
             Дальше ничего нет
           </Col>
