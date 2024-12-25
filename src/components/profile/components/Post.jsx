@@ -1,45 +1,19 @@
 import {Avatar, Col, Image, Row, Typography} from "antd";
 import { CheckCircleTwoTone, MoreOutlined, RetweetOutlined} from "@ant-design/icons";
+import "../profile.scss"
 
 const { Text } = Typography;
 
 const Post = ({post, user}) => {
   return (
-    <div className="post" style={{
-      position: "relative",
-      top: "15px",
-      marginRight: "25px",
-    }}>
-      <Row style={{
-        position: "relative",
-        left: "17px",
-        // border: "1px solid #000",
-        display: "flex",
-      }}>
-        <Col style={{
-          marginRight: "8px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}>
-          <RetweetOutlined style={{
-            fontSize: 15,
-            color: "#536471",
-            marginLeft: "40px",
-            marginRight: "4px"
-          }}/>
+    <div className="post">
+      <Row className="post__info-row">
+        <Col className="post__info-col">
+          <RetweetOutlined className="post__retweet-icon"/>
           <Avatar size={50} src="src/assets/S.png"/>
         </Col>
-        <Col style={{
-          position: "relative",
-          alignItems: "center"
-        }}>
-          <Text style={{
-            fontFamily: "Inter, sans-serif",
-            fontSize: 12,
-            marginRight: "5px",
-            color: "#536471",
-          }}>
+        <Col>
+          <Text className="post__reposted-text">
             You reposted
           </Text>
         </Col>
