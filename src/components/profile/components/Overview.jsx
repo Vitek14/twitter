@@ -3,7 +3,7 @@ import {ArrowLeftOutlined, CheckCircleTwoTone } from "@ant-design/icons";
 import "../profile.scss"
 
 const { Header } = Layout;
-const Text = Typography;
+const Text = Typography;  // THIS SHOULD BE CURLY BRACES!
 const Overview = () => {
   return (
     <div className="overview">
