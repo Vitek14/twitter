@@ -18,72 +18,29 @@ const Post = ({post, user}) => {
           </Text>
         </Col>
       </Row>
-      <Row style={{
-        position: "relative",
-        top: "-50px",
-        marginLeft: "85px",
-      }}>
-        <Col>
-          <Text style={{
-            fontFamily: "Inter, sans-serif",
-            fontWeight: "bold",
-            fontSize: 15,
-            marginRight: "5px",
-          }}>
+      <Row className="post__bio-row">
+        <Col flex="auto" className="post__user-info">
+          <Text className="post__fullname">
             {user.first_name + " " + user.last_name}
           </Text>
-        </Col>
-        <Col>
-          <CheckCircleTwoTone style={{
-            fontSize: 15,
-          }}/>
-        </Col>
-        <Col style={{
-          marginLeft: "7px",
-          alignItems: "center"
-        }}>
-          <Text style={{
-            fontFamily: "Inter, sans-serif",
-            fontSize: 15,
-            marginRight: "5px",
-            color: "#536471"
-          }}>
+          <CheckCircleTwoTone className="post__verified-icon" />
+          <Text className="post__publish-text">
             @{user.user_name} · {post.date}
           </Text>
         </Col>
-        <Col style={{
-          marginLeft: "30vh",
-          alignItems: "end",
-        }}>
-          <MoreOutlined style={{
-            fontSize: 15,
-          }}/>
+        <Col flex="none" className="post__more">
+          <MoreOutlined/>
         </Col>
       </Row>
-      <Row style={{
-        position: "relative",
-        top: "-50px",
-        left: "85px",
-        marginRight: "200px",
-      }}>
-        <Col style={{
-          alignItems: "center"
-        }}>
-          <Text style={{
-            fontFamily: "Inter, sans-serif",
-            fontSize: 15,
-          }}>
+      <Row className="post__content-row">
+        <Col>
+          <Text className="post__content-text">
             {post.content}
           </Text>
         </Col>
       </Row>
-      <Row style={{
-        position: "relative",
-        top: "-50px",
-        left: "85px",
-        marginRight: "200px",
-      }}>
-        <Image style={{ borderRadius: '10px' }} src={post.image}/>
+      <Row className="post__image-row">
+        <Image className="post__image" src={post.image}/>
       </Row>
     </div>
   )
