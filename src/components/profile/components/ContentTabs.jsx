@@ -1,8 +1,5 @@
-import {Avatar, Button, Col, Divider, Image, Row, Typography} from "antd";
+import { Button, Col, Divider, Row} from "antd";
 import {useState} from "react";
-import {CheckCircleTwoTone, MoreOutlined, RetweetOutlined} from "@ant-design/icons";
-
-const Text = Typography.Text;
 
 const ContentTabs = () => {
   const [selectedButton, setSelectedButton] = useState(null);
