@@ -26,6 +26,32 @@
   }
 }
 
+.overview {
+  &__header {
+    padding: 0
+  }
+
+  &__space {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__fullname {
+    vertical-align: top;
+    font-family: Inter, sans-serif;
+    font-weight: bold;
+    font-size: 20px
+  }
+
+  &__view_counter {
+    vertical-align: top;
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    color: #536471
+  }
+}
+
 .post {
   position: relative;
   top: 15px;

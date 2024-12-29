@@ -1,39 +1,23 @@
 import {Button, Space, Typography, Layout } from "antd";
 import {ArrowLeftOutlined, CheckCircleTwoTone } from "@ant-design/icons";
+import "../profile.scss"
 
 const { Header } = Layout;
 const Text = Typography;
 const Overview = () => {
   return (
-    <Header style={{ padding: "0px" }}>
-      <Space direction="horizontal" align={ "start" }>
-        <Button color="default" variant="link" icon={<ArrowLeftOutlined
-          style={{
-            fontSize: "20px"
-          }}
-        />}
-                className="profile-headers">
-        </Button>
-        <Space direction="vertical" size={0} style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-start"}}>
-          <Text style={{
-            verticalAlign: "top",
-            fontFamily: "Inter, sans-serif",
-            fontWeight: "bold",
-            fontSize: 20
-          }}>Stas Neprokin</Text>
-          <Text style={{
-            verticalAlign: "top",
-            fontFamily: "Inter, sans-serif",
-            fontSize: 13,
-            color: "#536471"
-          }}>23 post</Text>
+    <div className="overview">
+      <Header className="overview__header">
+        <Space direction="horizontal">
+          <Button color="default" variant="link" icon={<ArrowLeftOutlined/>} className="profile-headers"/>
+          <Space className="overview__space" direction="vertical" size={0}>
+            <Text className="overview__fullname">Stas Neprokin</Text>
+            <Text className="overview__view-counter">23 post</Text>
+          </Space>
+          <CheckCircleTwoTone/>
         </Space>
-        <CheckCircleTwoTone style={{ display: "flex" }}/>
-      </Space>
-    </Header>
+      </Header>
+    </div>
   )
 }
 
