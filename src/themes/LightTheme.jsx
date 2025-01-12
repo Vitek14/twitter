@@ -8,6 +8,7 @@ const lightTheme = {
   },
   components: {
     Layout: {
+      headerHeight: 64,
       bodyBg: "#fff",
       headerBg: "#fff",
       siderBg: "#fff",
