@@ -9,25 +9,10 @@ import {
   MoreOutlined,
   SmileOutlined
 } from "@ant-design/icons";
-import axios from "axios";
-import {useEffect, useState} from "react";
 
 const Text = Typography.Text;
 
-const Bio = () => {
-  const [profile, setProfile] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/profile/")
-      .then((res) => {
-        // console.log(res);
-        setProfile(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
+const Bio = ({profile}) => {
 
   // Formatting input date
   const formatDate = (dateString) => {
