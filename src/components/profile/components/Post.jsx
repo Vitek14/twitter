@@ -1,5 +1,6 @@
 import {Avatar, Col, Image, Row, Typography} from "antd";
 import { CheckCircleTwoTone, MoreOutlined, RetweetOutlined} from "@ant-design/icons";
+import ReactMarkdown from 'react-markdown';
 import "../profile.scss"
 
 const { Text } = Typography;
@@ -10,7 +11,8 @@ const Post = ({post, user}) => {
       <Row className="post__info-row">
         <Col className="post__info-col">
           <RetweetOutlined className="post__retweet-icon"/>
-          <Avatar size={50} src="src/assets/S.png"/>
+          {/*<Avatar size={50} src="src/assets/S.png"/>*/}
+          <Avatar size={50} src={user.avatar_url}/>
         </Col>
         <Col>
           <Text className="post__reposted-text">
@@ -21,9 +23,10 @@ const Post = ({post, user}) => {
       <Row className="post__bio-row">
         <Col flex="auto" className="post__user-info">
           <Text className="post__fullname">
-            {user.first_name + " " + user.last_name}
+            {user.first_name}
+            {user.last_name && " " + user.last_name}
           </Text>
-          <CheckCircleTwoTone className="post__verified-icon" />
+          {user.verified && <CheckCircleTwoTone style={{fontSize: "15px"}} />}
           <Text className="post__publish-text">
             @{user.user_name} · {post.date}
           </Text>
@@ -35,13 +38,17 @@ const Post = ({post, user}) => {
       <Row className="post__content-row">
         <Col>
           <Text className="post__content-text">
-            {post.content}
+            <ReactMarkdown>
+              {post.content}
+            </ReactMarkdown>
           </Text>
         </Col>
       </Row>
-      <Row className="post__image-row">
-        <Image className="post__image" src={post.image}/>
-      </Row>
+      {post.image_url &&
+        <Row className="post__image-row">
+          <Image className="post__image" src={post.image_url}/>
+        </Row>
+      }
     </div>
   )
 }

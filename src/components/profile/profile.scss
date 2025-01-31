@@ -123,6 +123,10 @@
   }
 
   &__content-text {
+    p {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
     font-family: Inter, sans-serif;
     font-size: 15px;
   }
