@@ -1,4 +1,4 @@
-import {Col, Row, Typography} from "antd";
+import {Col, Row, theme, Typography} from "antd";
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 const trends = [
@@ -11,13 +11,15 @@ const trends = [
 ];
 
 const RecommendationTopics = () => {
+  const { token } = theme.useToken();
+
   return (
     <div style={{
       marginTop: "16px",
       paddingTop: "21px",
       marginLeft: "25px",
       width: "475px",
-      backgroundColor: "#f7f9f9",
+      backgroundColor: token.recMenuBg,
       borderRadius: "16px"
     }}>
       <Typography.Text style={{

@@ -5,6 +5,7 @@ const lightTheme = {
   token: {
     colorBgBase: "#ffffff",
     colorBgContainer: "#ffffff",
+    recMenuBg: "#F7F9F9",
   },
   components: {
     Layout: {

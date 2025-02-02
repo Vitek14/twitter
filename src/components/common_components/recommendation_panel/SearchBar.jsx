@@ -1,9 +1,10 @@
-import { Row, Col, Input} from "antd";
+import {Row, Col, Input, theme} from "antd";
 import SearchIcon from '@mui/icons-material/Search';
 import {useState} from "react";
 
 
 const SearchBar = () => {
+  const { token } = theme.useToken();
   const [isFocused, setIsFocused] = useState(false);
   const [searchText, setSearchText] = useState('Search');
 
@@ -32,7 +33,7 @@ const SearchBar = () => {
     <div>
       <Row
         style={{
-          background: "#f7f9f9",
+          backgroundColor: token.recMenuBg,
           borderRadius: "384px",
           width: "475px",
           height: "44px",

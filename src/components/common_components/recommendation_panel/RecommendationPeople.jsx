@@ -1,9 +1,11 @@
 import {useEffect, useState} from 'react';
-import {Menu, Button, Row, Col, Avatar, Typography} from 'antd';
+import {Menu, Button, Row, Col, Avatar, Typography, theme} from 'antd';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import axios from "axios";
+// import {useTheme} from ".../themes/DarkTheme"
 
 const RecommendationPeople = () => {
+  const { token } = theme.useToken();
 
   const [items, setItems] = useState([]);
 
@@ -30,7 +32,8 @@ const RecommendationPeople = () => {
       paddingTop: "21px",
       marginLeft: "25px",
       width: "475px",
-      backgroundColor: "#f7f9f9",
+      // backgroundColor: "#f7f9f9",
+      backgroundColor: token.recMenuBg,
       borderRadius: "16px"
     }}>
       <Typography.Text style={{
@@ -44,7 +47,7 @@ const RecommendationPeople = () => {
       </Typography.Text>
       <Menu style={{
         marginTop: "16px",
-        backgroundColor: "#f7f9f9",
+        backgroundColor: token.recMenuBg,
         borderRadius: "16px",
         width: "475px"
       }}>
