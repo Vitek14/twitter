@@ -143,6 +143,10 @@
   }
 
   &__image {
-    border-radius: 10px
+    border-radius: 10px;
+  }
+
+  .ant-image-mask {
+    border-radius: 10px !important;
   }
 }
