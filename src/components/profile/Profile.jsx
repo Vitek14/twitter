@@ -62,7 +62,7 @@ const Profile = () => {
 
   return (
     <Layout className="profile">
-      <Overview />
+      <Overview profile={profile} />
       <div className="profile__content">
         <Row>
           <Col flex="auto">
