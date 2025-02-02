@@ -11,7 +11,6 @@ const Post = ({post, user}) => {
       <Row className="post__info-row">
         <Col className="post__info-col">
           <RetweetOutlined className="post__retweet-icon"/>
-          {/*<Avatar size={50} src="src/assets/S.png"/>*/}
           <Avatar size={50} src={user.avatar_url}/>
         </Col>
         <Col>

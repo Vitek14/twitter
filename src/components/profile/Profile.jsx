@@ -66,13 +66,14 @@ const Profile = () => {
       <div className="profile__content">
         <Row>
           <Col flex="auto">
-            <Banner />
+            <Banner profile_image={profile.banner_url} />
           </Col>
           <Col>
             <Avatar
               className="profile__avatar"
               size={132}
-              src="src/assets/Avatar.png"
+              src={profile.avatar_url}
+              // src="src/assets/Avatar.png"
             />
           </Col>
         </Row>
