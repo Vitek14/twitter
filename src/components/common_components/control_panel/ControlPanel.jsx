@@ -5,7 +5,7 @@ import ProfileBar from "./components/ProfileBar.jsx";
 import NewPostButton from "./components/NewPostButton.jsx";
 const { Header, Sider, Content, Footer } = Layout;
 
-const ControlPanel = () => {
+const ControlPanel = ({profile}) => {
   return (
     <Sider width={400}>
       <Layout
@@ -30,7 +30,7 @@ const ControlPanel = () => {
 
           {/* TODO: This shouldn't be heere*/}
           <Footer style={{ display: 'flex', justifyContent: 'flex-start', padding: 0 }}>
-            <ProfileBar/>
+            <ProfileBar profile={profile}/>
           </Footer>
         </Content>
       </Layout>

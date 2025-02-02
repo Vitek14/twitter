@@ -3,13 +3,28 @@ import ControlPanel from "../components/common_components/control_panel/ControlP
 import Profile from "../components/profile/Profile.jsx";
 import RecommendationPanel from "../components/common_components/recommendation_panel/RecommendationPanel.jsx";
 import "./profilepage.scss"
+import {useEffect, useState} from "react";
+import axios from "axios";
 
 const ProfilePage = () => {
+  const [profile, setProfile] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/profile/")
+      .then(res => {
+        setProfile(res.data);
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }, []);
+
   return (
     <Layout>
       <Row wrap={false}>
         <Col className="control-panel" xs={2} sm={4} md={7} lg={8} xl={{ flex: "0 0 300px" }} xxl={{ flex: "0 0 483px" }}>
-          <ControlPanel/>
+          <ControlPanel profile={profile}/>
         </Col>
         <Col xs={3} sm={5} md={9} lg={{ flex: "0 0 500px" }} xl={{ flex: "0 0 700px" }} xxl={{ flex: "0 0 800px" }} style={{
           maxWidth: "800px", // max to 800

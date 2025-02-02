@@ -4,17 +4,20 @@ import {Layout, Typography} from "antd";
 
 const Text = Typography.Text;
 
-const ProfileBar = () => {
+const ProfileBar = ({profile}) => {
   return (
     <Row justify="space-between" gutter={[16, 16]}>
       <Col>
-        <Avatar size={40} src="src/assets/Avatar.png"/>
+        <Avatar size={40} src={profile.avatar_url}/>
       </Col>
       <Col>
-        <Text strong>Stas Neprokin</Text>
-        <CheckCircleTwoTone style={{ marginLeft: 4 }}/>
+        <Text strong>
+          {profile.first_name}
+          {profile.last_name && " " + profile.last_name}
+        </Text>
+        {profile.verified && <CheckCircleTwoTone style={{ marginLeft: 4 }} />}
         <div style={{marginTop: '0px'}}>
-          <Text style={{ color: "#536471" }}>@sneprokin</Text>
+          <Text style={{ color: "#536471" }}>@{profile.user_name}</Text>
         </div>
       </Col>
       <Col>
