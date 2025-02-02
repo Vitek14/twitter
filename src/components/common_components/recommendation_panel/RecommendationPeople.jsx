@@ -1,17 +1,7 @@
 import {useEffect, useState} from 'react';
 import {Menu, Button, Row, Col, Avatar, Typography} from 'antd';
 import VerifiedIcon from '@mui/icons-material/Verified';
-import {CheckCircleTwoTone} from "@ant-design/icons";
 import axios from "axios";
-
-// const items = [
-//   { key: '1', img: 'src/assets/avatars/typeface.png', text: 'Typeface', secondText: "@typefaceai", button: 'Test' },
-//   { key: '2', img: 'src/assets/avatars/paul.png', text: 'Paul Mit', secondText: "@pmitu", button: 'Test' },
-//   { key: '3', img: 'src/assets/avatars/sam.png', text: 'Sam Altman', secondText: "@sams", button: 'Test' },
-//   { key: '4', img: 'src/assets/avatars/maxim.png', text: 'Maxim Boyarchuk', secondText: "@maximka", button: 'Test' },
-//   { key: '5', img: 'src/assets/avatars/sweetie.jpg', text: 'Sweetie Fox', secondText: "@sweetie", button: 'Test' },
-//   { key: '6', img: 'src/assets/avatars/gleb.png', text: 'Gleb Sharapo', secondText: "@sharapogleb", button: 'Test' },
-// ];
 
 const RecommendationPeople = () => {
 
