@@ -3,6 +3,7 @@ import GoogleIcon from "@mui/icons-material/Google";
 import AppleIcon from "@mui/icons-material/Apple";
 import "../auth.scss"
 import {useState} from "react";
+import LoginModal from "./LoginModal.jsx";
 
 const {Title, Paragraph} = Typography;
 
@@ -49,17 +50,12 @@ const AuthBlock = () => {
           <Button shape={"round"} size={"large"} variant="filled" block={true} onClick={() => setLoginModal(true)}>
             Войти
           </Button>
-          <Modal
-            title="Vertically centered modal dialog"
+          <LoginModal
             centered
             open={loginModal}
             onOk={() => setLoginModal(false)}
             onCancel={() => setLoginModal(false)}
-          >
-            <p>some contents...</p>
-            <p>some contents...</p>
-            <p>some contents...</p>
-          </Modal>
+          />
         </div>
       </div>
     </div>

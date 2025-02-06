@@ -69,3 +69,59 @@
     margin-bottom: 20px
   }
 }
+
+.ant-modal-close {
+  left: 16px;
+  right: auto;
+}
+
+.custom-header {
+  text-align: center;
+}
+
+.modal-icon {
+  font-size: 24px;
+}
+
+.login-box {
+  box-sizing: border-box;
+  min-width: 364px;
+  max-width: 364px;
+  margin: auto;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  padding-left: 32px;
+  padding-right: 32px;
+  &__login-text {
+    .ant-typography {
+      margin-bottom: 0;
+    }
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  &__google-login {
+    margin-bottom: 12px;
+    margin-top: 12px;
+    .ant-btn {
+      background-color: var(--login-integration-buttons);
+      color: var(--login-bg);
+      font-family: "Google Sans", arial, sans-serif;
+    }
+  }
+  &__apple-login {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    .ant-btn {
+      background-color: var(--login-integration-buttons);
+      color: var(--login-bg);
+      font-family: Twitter, Tahoma, sans-serif;
+      font-weight: bold;
+    }
+  }
+  &__divider {
+    .ant-divider {
+      margin-top: 0;
+    }
+  }
+}
