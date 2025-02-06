@@ -8,6 +8,7 @@ import LightTheme from "./themes/LightTheme.jsx";
 import {ConfigProvider, FloatButton} from "antd";
 import DarkTheme from "./themes/DarkTheme.jsx";
 import BedtimeIcon from '@mui/icons-material/Bedtime';
+import LoginPage from "./pages/LoginPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,11 +27,23 @@ const router = createBrowserRouter([
   {
     path: "/message",
     element: <MessagePage />
+  },
+  {
+    path: "/login",
+    element: <LoginPage />
   }
 ])
 
 const App = () => {
   const [currentTheme, setCurrentTheme] = React.useState(LightTheme);
+
+  React.useEffect(() => {
+    if (currentTheme && currentTheme.token) {
+      document.documentElement.style.setProperty('--login-bg', currentTheme.token.loginBg);
+      document.documentElement.style.setProperty('--login-integration-buttons', currentTheme.token.loginIntegrationButtons);
+    }
+  }, [currentTheme]);
+
   return (
     <ConfigProvider theme={currentTheme}>
       <RouterProvider router={router}/>

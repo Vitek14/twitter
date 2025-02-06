@@ -6,7 +6,9 @@ const darkTheme =
   token: {
     colorBgBase: "#15202B",
     colorBgContainer: "#15202B",
-    recMenuBg: "#1E2732"
+    recMenuBg: "#1E2732",
+    loginBg: "#000",
+    loginIntegrationButtons: "#fff"
   },
   components: {
     Layout: {

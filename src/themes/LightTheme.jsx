@@ -6,6 +6,8 @@ const lightTheme = {
     colorBgBase: "#ffffff",
     colorBgContainer: "#ffffff",
     recMenuBg: "#F7F9F9",
+    loginBg: "#fff",
+    loginIntegrationButtons: "#000"
   },
   components: {
     Layout: {

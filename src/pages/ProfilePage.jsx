@@ -32,7 +32,7 @@ const ProfilePage = () => {
           height: "100%",
           width: "100%", // Not required, but can be useful
         }}>
-          <Layout style={{ display: "flex", paddingLeft: "0px", border: "1px solid #f7f9f9"}}>
+          <Layout className="profile" style={{ display: "flex", paddingLeft: "0px"}}>
             <Profile/>
           </Layout>
         </Col>
