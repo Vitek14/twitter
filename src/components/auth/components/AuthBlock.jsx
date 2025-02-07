@@ -4,11 +4,13 @@ import AppleIcon from "@mui/icons-material/Apple";
 import "../auth.scss"
 import {useState} from "react";
 import LoginModal from "./LoginModal.jsx";
+import SignUpModal from "./SignUpModal.jsx";
 
 const {Title, Paragraph} = Typography;
 
 const AuthBlock = () => {
   const [loginModal, setLoginModal] = useState(false);
+  const [signUpModal, setSignUpModal] = useState(false);
 
   return (
     <div className="content-container__buttons">
@@ -29,7 +31,18 @@ const AuthBlock = () => {
       </div>
       <div className="content-container__sign-up">
         <div className="content-container__sign-up__button">
-          <Button shape={"round"} size={"large"} variant="filled" block={true}>
+          <SignUpModal
+            centered
+            open={signUpModal}
+            onOk={() => setSignUpModal(false)}
+            onCancel={() => setSignUpModal(false)}
+          />
+          <Button shape={"round"} size={"large"} variant="filled" block={true}
+          onClick={() => {
+            setSignUpModal(true);
+            setLoginModal(false);
+          }}
+          >
             Зарегистрироваться
           </Button>
         </div>
@@ -47,7 +60,10 @@ const AuthBlock = () => {
           </Title>
         </div>
         <div className="content-container__login-button">
-          <Button shape={"round"} size={"large"} variant="filled" block={true} onClick={() => setLoginModal(true)}>
+          <Button shape={"round"} size={"large"} variant="filled" block={true} onClick={() => {
+            setLoginModal(true);
+            setSignUpModal(false);
+          }}>
             Войти
           </Button>
           <LoginModal

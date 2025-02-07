@@ -87,7 +87,7 @@ const LoginModal = (props) => {
                 },
               ]}
             >
-              <Input prefix={<UserOutlined />} placeholder="Username" />
+              <Input size="large" prefix={<UserOutlined />} placeholder="Username" />
             </Form.Item>
             <Form.Item
               name="password"
@@ -98,7 +98,7 @@ const LoginModal = (props) => {
                 },
               ]}
             >
-              <Input prefix={<LockOutlined />} type="password" placeholder="Password" />
+              <Input size="large" prefix={<LockOutlined />} type="password" placeholder="Password" />
             </Form.Item>
             <Form.Item>
               <Flex justify="space-between" align="center">

@@ -14,6 +14,9 @@ const Text = Typography.Text;
 
 const Bio = ({profile}) => {
 
+  console.log("profile", profile);
+  console.log(profile.first_name)
+
   // Formatting input date
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString("en-US", {

@@ -125,3 +125,15 @@
     }
   }
 }
+
+.sign-up-box {
+  padding-left: 56px;
+  padding-right: 56px;
+  display: flex;
+  flex-direction: column;
+  &__date {
+    &__input {
+      display: inline-block;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import {Col, Layout, Row} from "antd";
+import {Col, Layout, Row, Spin} from "antd";
 import ControlPanel from "../components/common_components/control_panel/ControlPanel.jsx";
 import Profile from "../components/profile/Profile.jsx";
 import RecommendationPanel from "../components/common_components/recommendation_panel/RecommendationPanel.jsx";
@@ -6,8 +6,11 @@ import "./profilepage.scss"
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import {LoadingOutlined, XOutlined} from "@ant-design/icons";
 
 const ProfilePage = () => {
+  // Состояние загрузки
+  const [loading, setLoading] = useState(true);
   const [profile, setProfile] = useState([]);
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
@@ -32,6 +35,7 @@ const ProfilePage = () => {
           return;
         }
         setProfile(res.data);
+        setLoading(false);
       })
       .catch(err => {
         stop();
@@ -39,6 +43,8 @@ const ProfilePage = () => {
         console.error(err);
       });
   }, []);
+
+  console.log("PROFILEEEE isss", profile)
 
   return (
     <Layout>
@@ -53,7 +59,7 @@ const ProfilePage = () => {
           width: "100%", // Not required, but can be useful
         }}>
           <Layout className="profile" style={{ display: "flex", paddingLeft: "0px"}}>
-            <Profile/>
+            <Profile profile={profile}/>
           </Layout>
         </Col>
         <Col style={{
