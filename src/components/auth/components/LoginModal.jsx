@@ -41,6 +41,7 @@ const LoginModal = (props) => {
       {...props}
       closeIcon={<CloseOutlined />}
       title={null} // Очищаем title, чтобы использовать картинку
+      footer={null}
     >
       <div className="custom-header">
         <XOutlined className="modal-icon" />
@@ -83,11 +84,11 @@ const LoginModal = (props) => {
               rules={[
                 {
                   required: true,
-                  message: 'Please input your Username!',
+                  message: 'Please input your email!',
                 },
               ]}
             >
-              <Input size="large" prefix={<UserOutlined />} placeholder="Username" />
+              <Input size="large" prefix={<UserOutlined />} placeholder="Email" />
             </Form.Item>
             <Form.Item
               name="password"

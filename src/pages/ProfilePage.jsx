@@ -44,8 +44,6 @@ const ProfilePage = () => {
       });
   }, []);
 
-  console.log("PROFILEEEE isss", profile)
-
   return (
     <Layout>
       <Row wrap={false}>
