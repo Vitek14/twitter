@@ -1,10 +1,63 @@
-import './App.css'
-import Profile from "./pages/Profile.jsx";
+import './app.scss'
+import ProfilePage from "./pages/ProfilePage.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import MessagePage from "./pages/MessagePage.jsx";
+import {createBrowserRouter, Navigate, RouterProvider} from "react-router-dom";
+import React from "react";
+import LightTheme from "./themes/LightTheme.jsx";
+import {ConfigProvider, FloatButton} from "antd";
+import DarkTheme from "./themes/DarkTheme.jsx";
+import BedtimeIcon from '@mui/icons-material/Bedtime';
+import LoginPage from "./pages/LoginPage.jsx";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Navigate replace to="/profile" />,
+    errorElement: <div>404 Not Found Error</div>
+  },
+  {
+    path: "/profile",
+    element: <ProfilePage />,
+  },
+  {
+    path: "/home",
+    element: <HomePage />
+  },
+  {
+    path: "/message",
+    element: <MessagePage />
+  },
+  {
+    path: "/login",
+    element: <LoginPage />
+  }
+])
 
 const App = () => {
+  const [currentTheme, setCurrentTheme] = React.useState(LightTheme);
+
+  React.useEffect(() => {
+    if (currentTheme && currentTheme.token) {
+      document.documentElement.style.setProperty('--login-bg', currentTheme.token.loginBg);
+      document.documentElement.style.setProperty('--login-integration-buttons', currentTheme.token.loginIntegrationButtons);
+    }
+  }, [currentTheme]);
 
   return (
-    <Profile/>
+    <ConfigProvider theme={currentTheme}>
+      <RouterProvider router={router}/>
+
+      {/* Changing theme*/}
+      <FloatButton icon={<BedtimeIcon/>} onClick={() => {
+        if (currentTheme === DarkTheme) {
+          setCurrentTheme(LightTheme);
+        }
+        else {
+          setCurrentTheme(DarkTheme);
+        }
+      }} />
+    </ConfigProvider>
   )
 }
 

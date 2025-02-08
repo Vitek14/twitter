@@ -1,11 +1,23 @@
-import { theme } from 'antd';
+import { theme} from 'antd';
 
 const lightTheme = {
   algorithm: theme.defaultAlgorithm,
   token: {
-    colorPrimary: '#000000',
-    colorBgContainer: '#ffffff',
+    colorBgBase: "#ffffff",
+    colorBgContainer: "#ffffff",
+    recMenuBg: "#F7F9F9",
+    loginBg: "#fff",
+    loginIntegrationButtons: "#000"
   },
+  components: {
+    Layout: {
+      headerHeight: 64,
+      bodyBg: "#fff",
+      headerBg: "#fff",
+      siderBg: "#fff",
+      footerBg: "#fff"
+    },
+  }
 };
 
 export default lightTheme;

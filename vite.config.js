@@ -1,13 +1,15 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import svgr from 'vite-plugin-svgr';
 
 export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler' // or "modern"
+      }
+    }
+  },
   plugins: [
     react(),
-    svgr({
-      // Настройки SVGR (опционально)
-      exportAsDefault: false, // Включает поддержку `ReactComponent`
-    }),
   ],
 });
