@@ -7,7 +7,18 @@ const { Header, Sider, Content, Footer } = Layout;
 
 const ControlPanel = ({profile}) => {
   return (
-    <Sider width={400}
+    <Sider width={300} style={
+      {
+        overflow: 'auto',
+        height: '100vh',
+        position: 'sticky',
+        insetInlineStart: 0,
+        top: 0,
+        bottom: 0,
+        scrollbarWidth: 'thin',
+        scrollbarGutter: 'stable',
+      }
+    }
     // style={{
     //     position: 'fixed', // Закрепление панели
     //     height: '100vh', // Высота на весь экран
@@ -16,12 +27,6 @@ const ControlPanel = ({profile}) => {
     //     overflow: 'auto', // Автоскролл, если содержимое больше высоты
     //   }}
     >
-      <Layout
-        style={{
-          marginTop: 0,
-          marginLeft: 60,
-        }}
-      >
       {/*  Here will be all components*/}
         <Header>
           <ApplicationLogo/>
@@ -41,7 +46,6 @@ const ControlPanel = ({profile}) => {
             <ProfileBar profile={profile}/>
           </Footer>
         </Content>
-      </Layout>
     </Sider>
     )
 };

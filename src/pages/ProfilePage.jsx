@@ -46,10 +46,7 @@ const ProfilePage = () => {
 
   return (
     <Layout>
-      <Row wrap={false}>
-        <Col className="control-panel" xs={2} sm={4} md={7} lg={8} xl={{ flex: "0 0 300px" }} xxl={{ flex: "0 0 483px" }}>
-          <ControlPanel profile={profile}/>
-        </Col>
+        <ControlPanel/>
         <Col xs={3} sm={5} md={9} lg={{ flex: "0 0 500px" }} xl={{ flex: "0 0 700px" }} xxl={{ flex: "0 0 800px" }} style={{
           maxWidth: "800px", // max to 800
           minWidth: "0", // To stretch!
@@ -68,7 +65,7 @@ const ProfilePage = () => {
           {/* Правое боковое меню */}
           <RecommendationPanel/>
         </Col>
-      </Row>
+      {/*</Row>*/}
     </Layout>
   )
 }
