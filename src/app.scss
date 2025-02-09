@@ -4,6 +4,9 @@ html, body, #root {
   width: 100%;
   margin: 0;
   padding: 0;
+  //display: flex;
+  //justify-content: center;
+  //align-items: center;
 
   .theme-dark {
     --profile-border-color: #1E2732; // нужное значение для темной темы

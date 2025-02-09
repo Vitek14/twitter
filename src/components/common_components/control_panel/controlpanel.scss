@@ -1,18 +1,41 @@
 .control-panel {
+  //overflow: auto;
+  display: flex;
+  flex-direction: column;
   align-items: flex-end;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
+  position: relative;
+  //position: sticky;
+  //top: 0;
+  //insertInlineStart: 0;
+  //bottom: 0;
 
-  &__sider {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  &__content {
     width: 275px;
     margin-left: 60px;
-    padding-left: 8px;
-    padding-right: 8px;
+    overflow-y: auto;
   }
-}
 
-.app-logo {
-  padding-top: 2px;
-  padding-bottom: 2px;
+  &__panel {
+    top: 0;
+    //position: fixed;
+    height: 100%;
+    scrollbar-width: thin;
+    scrollbar-gutter: stable;
+    align-items: flex-start;
+
+
+    &__app-logo {
+      padding-top: 2px;
+      padding-bottom: 2px;
+      font-size: 32px;
+    }
+
+    &__buttons {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
 }

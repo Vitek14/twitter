@@ -45,26 +45,27 @@ const ProfilePage = () => {
   }, []);
 
   return (
-    <Layout>
-        <ControlPanel/>
-        <Col xs={3} sm={5} md={9} lg={{ flex: "0 0 500px" }} xl={{ flex: "0 0 700px" }} xxl={{ flex: "0 0 800px" }} style={{
-          maxWidth: "800px", // max to 800
-          minWidth: "0", // To stretch!
-          height: "100%",
-          width: "100%", // Not required, but can be useful
-        }}>
-          <Layout className="profile" style={{ display: "flex", paddingLeft: "0px"}}>
-            <Profile profile={profile}/>
-          </Layout>
-        </Col>
-        <Col style={{
-          flex: 1,
-          height: "100%",
-          width: "100%",
-        }}>
-          {/* Правое боковое меню */}
-          <RecommendationPanel/>
-        </Col>
+    <Layout hasSider>
+      <ControlPanel profile={profile}/>
+      {/*<Row wrap={false}>*/}
+        {/*<Col xs={3} sm={5} md={9} lg={{ flex: "0 0 500px" }} xl={{ flex: "0 0 700px" }} xxl={{ flex: "0 0 800px" }} style={{*/}
+        {/*  maxWidth: "800px", // max to 800*/}
+        {/*  minWidth: "0", // To stretch!*/}
+        {/*  height: "100%",*/}
+        {/*  width: "100%", // Not required, but can be useful*/}
+        {/*}}>*/}
+        {/*  <Layout className="profile" style={{ display: "flex", paddingLeft: "0px"}}>*/}
+        {/*    <Profile profile={profile}/>*/}
+        {/*  </Layout>*/}
+        {/*/!*</Col>*!/*/}
+        {/*/!*<Col style={{*!/*/}
+        {/*/!*  flex: 1,*!/*/}
+        {/*/!*  height: "100%",*!/*/}
+        {/*/!*  width: "100%",*!/*/}
+        {/*/!*}}>*!/*/}
+        {/*  /!* Правое боковое меню *!/*/}
+        {/*  <RecommendationPanel/>*/}
+        {/*/!*</Col>*!/*/}
       {/*</Row>*/}
     </Layout>
   )
