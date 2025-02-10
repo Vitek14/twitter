@@ -1,0 +1,43 @@
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 34px;
+  &__input {
+    display: flex;
+    flex-direction: row;
+
+    &__avatar {
+      padding-right: 8px;
+    }
+    &__text {
+      box-sizing: border-box;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+  }
+
+  &__divider {
+    .ant-divider {
+      margin-top: 12px;
+      margin-bottom: 12px;
+    }
+  }
+
+  //&__can-reply {
+  //  display: flex;
+  //}
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__helpers {
+      display: flex;
+    }
+
+    &__post-button {
+      margin-left: auto;
+    }
+  }
+}
