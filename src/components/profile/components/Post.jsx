@@ -1,11 +1,20 @@
 import {Avatar, Col, Image, Row, Typography} from "antd";
 import { CheckCircleTwoTone, MoreOutlined, RetweetOutlined} from "@ant-design/icons";
 import ReactMarkdown from 'react-markdown';
+import ReactPlayer from 'react-player'
 import "../profile.scss"
 
 const { Text } = Typography;
 
 const Post = ({post, user}) => {
+  const isImage = (url) => {
+    return url.match(/\.(jpeg|jpg|gif|png)$/) != null;
+  };
+
+  const isVideo = (url) => {
+    return url.match(/\.(mp4|webm|ogg)$/) != null;
+  };
+
   return (
     <div className="post">
       <Row className="post__info-row">
@@ -45,7 +54,11 @@ const Post = ({post, user}) => {
       </Row>
       {post.image_url &&
         <Row className="post__image-row">
+          {/*{isImage(post.image_url) && <Image className="post__image" src={post.image_url}/>}*/}
+          {/*{console.log(isVideo(post.image_url))}*/}
+          {/*{isVideo(post.image_url) && <ReactPlayer url={post.image_url}/>}*/}
           <Image className="post__image" src={post.image_url}/>
+          {/*<ReactPlayer url={post.image_url}/>*/}
         </Row>
       }
     </div>

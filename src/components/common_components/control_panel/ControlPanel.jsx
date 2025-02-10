@@ -7,7 +7,12 @@ const { Header, Sider, Content, Footer } = Layout;
 
 const ControlPanel = ({profile}) => {
   return (
-    <Sider width={400}
+    <Sider width={400} style={{
+      overflow: "auto",
+      scrollBehavior: "smooth",
+      display: "flex",
+      flexGrow: 1,
+    }}
     // style={{
     //     position: 'fixed', // Закрепление панели
     //     height: '100vh', // Высота на весь экран

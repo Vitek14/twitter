@@ -88,11 +88,10 @@ const Profile = ({profile}) => {
   //       console.error(err);
   //     });
   // }, []);
-
   const fallbackImageUrl =
-    "https://cdn.discordapp.com/attachments/826717369400688643/1337386782395863081/00004-3704161152.png?ex=67a74200&is=67a5f080&hm=bcfac182bb16ea37be44b1c1e8ccfe4d05489589838508b42dbae6db9f644089&";
+    "../../../public/404_avatar.png";
   const bannerFallbackUrl =
-    "https://cdn.discordapp.com/attachments/826717369400688643/1337395303040684093/00009-1025043266.png?ex=67a749ef&is=67a5f86f&hm=9abd080c735ca2688de6c82e2fe652ea77af2799d0dba4c087be7d55a08db90e&"; // Новый fallback URL для баннера
+    "../../../public/404_banner.png"; // Новый fallback URL для баннера
 
   return (
     <Layout className="profile">
@@ -139,13 +138,7 @@ const Profile = ({profile}) => {
           })}
         </Content>
       </div>
-      <Footer>
-        <Row>
-          <Col>Дальше ничего нет</Col>
-        </Row>
-      </Footer>
     </Layout>
   );
 };
-
 export default Profile;

@@ -7,6 +7,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import {LoadingOutlined, XOutlined} from "@ant-design/icons";
+import Api from "../api";
 
 const ProfilePage = () => {
   // Состояние загрузки
@@ -15,33 +16,42 @@ const ProfilePage = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
 
-  if (!token) {
-    console.error('ERROR, NO TOKEN');
-    stop();
-    navigate("/login")
-  }
+  // if (!token) {
+  //   console.error('ERROR, NO TOKEN');
+  //   stop();
+  //   navigate("/login")
+  // }
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/profile/", {
-        headers: {
-          'x-auth-token': token
-        }
-      })
-      .then(res => {
-        if (res.status !== 200) {
-          stop();
-          navigate("/login")
-          return;
-        }
+    Api.Profile.get().then((res) => {
+      console.log("test")
         setProfile(res.data);
         setLoading(false);
-      })
-      .catch(err => {
-        stop();
-        navigate("/login");
-        console.error(err);
-      });
+    }).catch(err => {
+      localStorage.deleteItem('token');
+      navigate("/login");
+      console.error(err);
+    });
+    // axios
+    //   .get("http://localhost:5000/api/profile/", {
+    //     headers: {
+    //       'x-auth-token': token
+    //     }
+    //   })
+    //   .then(res => {
+    //     if (res.status !== 200) {
+    //       // stop();
+    //       navigate("/login")
+    //       return;
+    //     }
+    //     setProfile(res.data);
+    //     setLoading(false);
+    //   })
+    //   .catch(err => {
+    //     // stop();
+    //     navigate("/login");
+    //     console.error(err);
+    //   });
   }, []);
 
   return (
