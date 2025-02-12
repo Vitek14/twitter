@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage.jsx";
 import MessagePage from "./pages/MessagePage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import React from "react";
+import NotificationPage from "./pages/NotificationPage.jsx";
 
 const SecuredRoute = ({children, ...rest}) => {
   if (localStorage.getItem("token") === null) {
@@ -23,6 +24,12 @@ const router = createBrowserRouter([
     path: "/profile",
     element: <SecuredRoute>
       <ProfilePage />
+    </SecuredRoute>,
+  },
+  {
+    path: "/notifications",
+    element: <SecuredRoute>
+      <NotificationPage />
     </SecuredRoute>,
   },
   {
