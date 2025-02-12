@@ -1,28 +1,92 @@
-import {Menu, Layout} from "antd";
+import {Avatar, Button, Flex, Image, Layout, Typography} from "antd";
+import "./controlpanel.scss"
+import {
+  BellOutlined,
+  BookOutlined, CheckCircleOutlined, CommentOutlined,
+  FileTextOutlined,
+  HomeOutlined,
+  MailOutlined, MoreOutlined,
+  SearchOutlined, UserOutlined,
+  XOutlined
+} from "@ant-design/icons";
+import React from "react";
 
-const {Sider} = Layout;
 
 const ControlPanel = () => {
   return (
-    <div style={{flexGrow: 1, display: 'flex', alignItems: "flex-end", flexDirection: 'column'}}>
-      <Sider
-        breakpoint="lg"
-        collapsedWidth="50"
-        onBreakpoint={(broken) => {
-          console.log(broken);
-        }}
-        onCollapse={(collapsed, type) => {
-          console.log(collapsed, type);
-        }}
-
-      >
-        <div className="logo" style={{textAlign: 'center', padding: '16px'}}>Логотип</div>
-        <Menu theme="dark" mode="vertical" defaultSelectedKeys={['1']}>
-          <Menu.Item key="1">Опция 1</Menu.Item>
-          <Menu.Item key="2">Опция 2</Menu.Item>
-          <Menu.Item key="3">Опция 3</Menu.Item>
-        </Menu>
-      </Sider>
+    <div className="control-panel">
+      <div className="control-panel__box">
+        <div className="control-panel__box__content-box">
+          <div className="control-panel__box__header">
+            <div className="control-panel__box__header__logo">
+              <Button type="dashed" shape="circle" icon={<XOutlined/>}/>
+            </div>
+          </div>
+          <Flex justify="flex-end" className="control-panel__box__content" vertical gap={21}>
+            <Button block type="text" shape="round" icon={<HomeOutlined/>}>
+              Home
+            </Button>
+            <Button block type="text" shape="round" icon={<SearchOutlined/>}>
+              Explore
+            </Button>
+            <Button block type="text" shape="round" icon={<BellOutlined/>}>
+              Notifications
+            </Button>
+            <Button block type="text" shape="round" icon={<MailOutlined/>}>
+              Messages
+            </Button>
+            <Button block type="text" shape="round" icon={<FileTextOutlined/>}>
+              Lists
+            </Button>
+            <Button block type="text" shape="round" icon={<BookOutlined/>}>
+              Bookmarks
+            </Button>
+            <Button block type="text" shape="round" icon={<CommentOutlined/>}>
+              Communities
+            </Button>
+            <Button block type="text" shape="round" icon={<CheckCircleOutlined/>}>
+              Verified Orgs
+            </Button>
+            <Button block type="text" shape="round" icon={<UserOutlined/>}>
+              Profile
+            </Button>
+            <Button block type="text" shape="round" icon={<MoreOutlined/>}>
+              More
+            </Button>
+            <Button block
+              type="primary"
+              shape="round"
+              style={{
+                // width: "270px",
+                height: "60px",
+                fontWeight: "bold",
+                fontSize: 16,
+                // marginBottom: "200px",
+              }}
+              // onClick={showModal}
+            >
+              Post
+            </Button>
+          </Flex>
+        </div>
+        <div className="control-panel__box__footer">
+          <div className="control-panel__box__footer__avatar">
+            <Avatar size={50} src="../../../public/404_avatar.png"/>
+          </div>
+          <div className="control-panel__box__footer__info">
+            <div className="control-panel__box__footer__info__fullname">
+              <Typography.Title level={5}>
+                Test
+              </Typography.Title>
+            </div>
+            <div className="control-panel__box__footer__info__username">
+              <Typography.Paragraph level={5}>
+                Another Test
+              </Typography.Paragraph>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

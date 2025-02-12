@@ -1,0 +1,74 @@
+.control-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 275px;  // From x
+  align-items: flex-start;
+
+  &__box {
+    position: fixed;
+    width: 275px;
+    //margin-left: 60px;
+
+    &__header {
+      width: 100%;
+      //font-size: 24px;
+      margin-top: 4px;
+      margin-bottom: 21px;
+
+      &__logo {
+        padding-left: 8px;
+        .ant-btn {
+          width: 40px;
+          height: 40px;
+          border-style: none;
+          .ant-btn-icon {
+            .anticon {
+              font-size: 24px;
+            }
+          }
+          //font-family: Inter, sans-serif;
+        }
+      }
+    }
+
+    &__content {
+      //width: 100%;
+
+      .ant-btn {
+        font-family: Inter, sans-serif;
+        font-size: 24px;
+        border: none;
+        display: flex;
+        justify-content: flex-start;
+        text-align: left;
+      }
+    }
+
+    &__content-box {
+      height: 100vh;
+      min-height: 100%;
+    }
+
+
+    &__footer {
+      position: relative;
+      height: 70px;
+      margin-top: -70px;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      margin-left: 10px;
+      //margin-top: auto;
+      &__info {
+        font-family: "TwitterChirp", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        margin-left: 12px;
+        display: flex;
+        flex-direction: column;
+        .ant-typography {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
