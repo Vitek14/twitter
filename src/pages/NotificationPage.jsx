@@ -1,5 +1,7 @@
-import {Layout, Menu} from "antd"
+import {Layout, Menu, Typography} from "antd"
 import "./notificationpage.scss"
+import {XOutlined} from "@ant-design/icons";
+import ControlPanel from "../components/common_components/new_control_panel/ControlPanel.jsx";
 
 const {Sider, Content,  Header, Footer} = Layout;
 
@@ -7,32 +9,17 @@ const NotificationPage = () => {
   return (
     <div className="main">
       {/* Левый Sider */}
-      <div style={{flexGrow: 1, display: 'flex', alignItems: "flex-end", flexDirection: 'column'}}>
-        <Sider
-          breakpoint="lg"
-          collapsedWidth="50"
-          onBreakpoint={(broken) => {
-            console.log(broken);
-          }}
-          onCollapse={(collapsed, type) => {
-            console.log(collapsed, type);
-          }}
-
-        >
-          <div className="logo" style={{textAlign: 'center', padding: '16px'}}>Логотип</div>
-          <Menu theme="dark" mode="vertical" defaultSelectedKeys={['1']}>
-            <Menu.Item key="1">Опция 1</Menu.Item>
-            <Menu.Item key="2">Опция 2</Menu.Item>
-            <Menu.Item key="3">Опция 3</Menu.Item>
-          </Menu>
-        </Sider>
+      <div className="control-panel" style={{flexGrow: 1, display: 'flex', alignItems: "flex-end", flexDirection: 'column', height: "100vh"}}>
+        <ControlPanel />
       </div>
 
       {/* Центральный Content */}
       <div style={{flexGrow: 2, display: 'flex', flexDirection: 'column'}}>
         <Layout>
-          <Header style={{background: '#eee', textAlign: 'center', padding: '16px'}}>
-            Заголовок
+          <Header style={{textAlign: 'start', padding: '16px'}}>
+            <Typography.Title level={4}>
+              Notifications
+            </Typography.Title>
           </Header>
           <Content style={{padding: '24px', flexGrow: 1}}>
             <div style={{
