@@ -18,6 +18,7 @@ const App = () => {
     if (currentTheme && currentTheme.token) {
       document.documentElement.style.setProperty('--login-bg', currentTheme.token.loginBg);
       document.documentElement.style.setProperty('--login-integration-buttons', currentTheme.token.loginIntegrationButtons);
+      document.documentElement.style.setProperty('--color-bg-base', currentTheme.token.colorBgBase);
     }
   }, [currentTheme]);
 
