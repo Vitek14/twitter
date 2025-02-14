@@ -13,7 +13,6 @@ import {useContext} from "react"
 import data from "@emoji-mart/data";
 import { ProfilePostsContext } from "../../../profile/ProfileContext.jsx"; // Путь к файлу с контекстом
 
-
 const {TextArea} = Input;
 
 const NewPostModal = ({ open, onClose}) => {
@@ -31,12 +30,17 @@ const NewPostModal = ({ open, onClose}) => {
     const newPost = {
       id: profilePosts.length + 1,
       user_id: 2,
-      content: "Test",
-      // avatar_url:
+      content: text, // Используем текст из TextArea
+      image: uploadedImage // Используем загруженное изображение, если оно есть
     };
+    console.log(`Image: ${uploadedImage}`)
 
     setProfilePosts((prevPosts) => [newPost, ...prevPosts]);
-  }
+    // Очистим текстовое поле и изображение после добавления поста
+    setText("");
+    setUploadedImage(null);
+    onClose(); // Закрываем модальное окно
+  };
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
