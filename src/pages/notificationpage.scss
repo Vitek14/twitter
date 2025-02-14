@@ -5,4 +5,36 @@
   justify-content: center;  // Probably, won't work...
   min-height: 100vh;
   background-color: var(--color-bg-base);
+
+  &__control-panel {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    height: 100vh;
+    flex-grow: 1;
+
+  }
+
+  &__content-box {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+    &__header {
+      text-align: start;
+      padding: 16px;
+      .ant-typography {
+        margin: 0;
+      }
+    }
+
+    &__content {
+      padding: 16px;
+
+      &__container {
+        //height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
 }
