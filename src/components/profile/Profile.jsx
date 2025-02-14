@@ -5,7 +5,8 @@ import Bio from "./components/Bio.jsx";
 import ContentTabs from "./components/ContentTabs.jsx";
 import Post from "./components/Post.jsx";
 import "./profile.scss";
-import { useEffect, useState } from "react";
+import {useState, useEffect} from "react"
+import {ProfilePostsContext} from "./ProfileContext.jsx"
 import axios from "axios";
 
 const { Content, Footer } = Layout;
@@ -38,45 +39,10 @@ const FallbackImage = ({ src, fallbackSrc, isAvatar, ...props }) => {
   );
 };
 
-const Profile = ({profile}) => {
+const Profile = ({profile, profilePosts, users}) => {
   // const [profile, setProfile] = useState([]);
   console.log("Profile is: ", profile)
-  const [profilePosts, setProfilePosts] = useState([]);
-  const [users, setUsers] = useState({});
 
-  useEffect(() => {
-    // Получаем данные постов и пользователей синхронно
-    const fetchHomeData = () => {
-      axios.get("http://localhost:5000/api/home/")
-        .then(res => {
-          setProfilePosts(res.data);
-          return res.data;
-        })
-        .then(posts => {
-          // Получаем уникальные ID пользователей
-          const userIds = [...new Set(posts.map(post => post.user_id))];
-
-          // Получаем данные пользователей
-          const userPromises = userIds.map(userId =>
-            axios.get(`http://localhost:5000/api/users/${userId}`)
-          );
-
-          return Promise.all(userPromises);
-        })
-        .then(userResponses => {
-          const usersMap = userResponses.reduce((acc, userResponse) => {
-            acc[userResponse.data.id] = userResponse.data;
-            return acc;
-          }, {});
-          setUsers(usersMap);
-        })
-        .catch(error => {
-          console.error('Ошибка при получении данных:', error);
-        });
-    };
-
-    fetchHomeData();
-  }, []);
 
   // useEffect(() => {
   //   axios

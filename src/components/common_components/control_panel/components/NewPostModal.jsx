@@ -9,18 +9,34 @@ import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import Picker from "@emoji-mart/react";
+import {useContext} from "react"
 import data from "@emoji-mart/data";
+import { ProfilePostsContext } from "../../../profile/ProfileContext.jsx"; // Путь к файлу с контекстом
+
 
 const {TextArea} = Input;
 
-const NewPostModal = ({ open, onClose }) => {
+const NewPostModal = ({ open, onClose}) => {
   const [uploadedImage, setUploadedImage] = useState(null);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const { profilePosts, setProfilePosts } = useContext(ProfilePostsContext); // Доступ к данным из контекста
 
   const [text, setText] = useState("");
   const handleEmojiSelect = (emoji) => {
     setText((prevText) => prevText + emoji.native);
   };
+
+  const addPost = () => {
+    console.log(`POSTS: ${profilePosts}`)
+    const newPost = {
+      id: profilePosts.length + 1,
+      user_id: 2,
+      content: "Test",
+      // avatar_url:
+    };
+
+    setProfilePosts((prevPosts) => [newPost, ...prevPosts]);
+  }
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -114,7 +130,7 @@ const NewPostModal = ({ open, onClose }) => {
             </Tooltip>
           </div>
           <div className="modal-content__footer__post-button">
-            <Button>
+            <Button onClick={addPost}>
               Post
             </Button>
           </div>
