@@ -14,6 +14,11 @@ const Profile = {
   get: () => axios.get("/profile/")
 }
 
+const Notifications = {
+  get: () => axios.get("/notifications/")
+}
+
 export default {
-  Profile
+  Profile,
+  Notifications
 }
