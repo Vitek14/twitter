@@ -18,7 +18,12 @@ const Notifications = {
   get: () => axios.get("/notifications/")
 }
 
+const Posts = {
+  create_post: (body) => axios.post("/user_posts", body)
+}
+
 export default {
   Profile,
-  Notifications
+  Notifications,
+  Posts
 }

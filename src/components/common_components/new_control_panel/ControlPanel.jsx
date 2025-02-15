@@ -9,10 +9,21 @@ import {
   SearchOutlined, UserOutlined,
   XOutlined
 } from "@ant-design/icons";
-import React from "react";
+import React, {useState} from "react";
+import NewPostModal from "../control_panel/components/NewPostModal.jsx"
 
 
 const ControlPanel = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true); // Открываем модальное окно
+  };
+
+  const handleClose = () => {
+    setIsModalVisible(false); // Закрываем модальное окно
+  };
+
   return (
     <div className="control-panel">
       <div className="control-panel__box">
@@ -63,10 +74,11 @@ const ControlPanel = () => {
                 fontSize: 16,
                 // marginBottom: "200px",
               }}
-              // onClick={showModal}
+              onClick={showModal}
             >
               Post
             </Button>
+            <NewPostModal open={isModalVisible} onClose={handleClose} />
           </Flex>
         </div>
         <div className="control-panel__box__footer">

@@ -1,4 +1,4 @@
 import { createContext, useContext } from "react";
 
 // Создаем контекст
-export const ProfilePostsContext = createContext(null);
+export const ProfilePostsContext = createContext([]);

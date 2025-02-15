@@ -12,6 +12,8 @@ import Picker from "@emoji-mart/react";
 import {useContext} from "react"
 import data from "@emoji-mart/data";
 import { ProfilePostsContext } from "../../../profile/ProfileContext.jsx"; // Путь к файлу с контекстом
+// import Posts from ""
+import Api from "../../../../api.js";
 
 const {TextArea} = Input;
 
@@ -28,11 +30,18 @@ const NewPostModal = ({ open, onClose}) => {
   const addPost = () => {
     console.log(`POSTS: ${profilePosts}`)
     const newPost = {
-      id: profilePosts.length + 1,
+      // id: profilePosts.length + 1,
       user_id: 2,
       content: text, // Используем текст из TextArea
-      image: uploadedImage // Используем загруженное изображение, если оно есть
+      // image: uploadedImage, // Используем загруженное изображение, если оно есть
+      parent_id: null
     };
+
+    Api.Posts.create_post({
+      user_id: 2,
+      content: text
+    })
+
     console.log(`Image: ${uploadedImage}`)
 
     setProfilePosts((prevPosts) => [newPost, ...prevPosts]);
