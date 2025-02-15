@@ -19,6 +19,7 @@
     display: flex;
     flex-direction: column;
     flex-grow: 2;
+    max-width: 600px;
     &__header {
       text-align: start;
       padding: 16px;
@@ -28,7 +29,6 @@
     }
 
     &__content {
-      padding: 16px;
 
       &__container {
         //height: 100%;
@@ -38,3 +38,16 @@
     }
   }
 }
+//
+//.recommendations {
+//  display: flex;
+//  flex-grow: 1;
+//  flex-direction: column;
+//
+//  padding: 24px;
+//  width: 350px;
+//
+//  &__search {
+//
+//  }
+//}

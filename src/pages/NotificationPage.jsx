@@ -1,12 +1,14 @@
-import {Avatar, Card, Layout, Menu, Typography} from "antd"
+import {Avatar, Card, Layout, Menu, Typography, Input} from "antd"
 import "./notificationpage.scss"
 import {XOutlined} from "@ant-design/icons";
 import ControlPanel from "../components/common_components/new_control_panel/ControlPanel.jsx";
 import {useEffect, useState} from "react";
 import Api from "../api.js";
 import {useNavigate} from "react-router-dom";
+import RecommendationPanel from "../components/common_components/new_recommendation_panel/ReccomendationPanel.jsx";
 
 const {Sider, Content,  Header, Footer} = Layout;
+const {Search} = Input;
 
 const NotificationPage = () => {
   const navigate = useNavigate();
@@ -75,20 +77,7 @@ const NotificationPage = () => {
       </div>
 
       {/* Правая кастомная панель */}
-      <div style={{flexGrow: 1, display: 'flex', flexDirection: 'column', background: '#f0f2f5', padding: '24px'}}>
-        <div style={{background: '#fff', padding: '16px', marginBottom: '16px'}}>
-          <h3>Поиск</h3>
-          <input type="text" placeholder="Поиск..." style={{width: '100%', padding: '8px'}}/>
-        </div>
-        <div style={{background: '#fff', padding: '16px'}}>
-          <h3>Тренды</h3>
-          <ul>
-            <li>Тренд 1</li>
-            <li>Тренд 2</li>
-            <li>Тренд 3</li>
-          </ul>
-        </div>
-      </div>
+      <RecommendationPanel/>
     </div>
   )
 }

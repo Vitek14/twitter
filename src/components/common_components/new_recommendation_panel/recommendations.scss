@@ -1,0 +1,20 @@
+.recommendations {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  padding: 24px;
+
+  &__panel {
+    width: 375px;
+
+    &__box {
+      width: 375px;
+      //position: fixed;
+    }
+
+    &__trending {
+
+    }
+  }
+
+}

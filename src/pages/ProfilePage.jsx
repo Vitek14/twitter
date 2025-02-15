@@ -59,8 +59,8 @@ const ProfilePage = () => {
   useEffect(() => {
     Api.Profile.get().then((res) => {
       console.log("test")
-        setProfile(res.data);
-        setLoading(false);
+      setProfile(res.data);
+      setLoading(false);
     }).catch(err => {
       localStorage.deleteItem('token');
       navigate("/login");
