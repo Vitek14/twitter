@@ -1,7 +1,7 @@
 import {Col, Layout, Row, Spin} from "antd";
-import ControlPanel from "../components/common_components/control_panel/ControlPanel.jsx";
+import ControlPanel from "../components/common_components/new_control_panel/ControlPanel.jsx";
 import Profile from "../components/profile/Profile.jsx";
-import RecommendationPanel from "../components/common_components/recommendation_panel/RecommendationPanel.jsx";
+import RecommendationPanel from "../components/common_components/new_recommendation_panel/RecommendationPanel.jsx";
 import "./profilepage.scss"
 import {useEffect, useState} from "react";
 import axios from "axios";
@@ -70,31 +70,20 @@ const ProfilePage = () => {
 
   return (
     <ProfilePostsContext.Provider value={{ profilePosts, setProfilePosts }}>
-      <Layout>
-        <Row wrap={false}>
-          <Col className="control-panel" xs={2} sm={4} md={7} lg={8} xl={{ flex: "0 0 300px" }} xxl={{ flex: "0 0 483px" }}>
-            <ControlPanel profile={profile}/>
-          </Col>
-          <Col xs={3} sm={5} md={9} lg={{ flex: "0 0 500px" }} xl={{ flex: "0 0 700px" }} xxl={{ flex: "0 0 800px" }} style={{
-            maxWidth: "800px", // max to 800
-            minWidth: "0", // To stretch!
-            height: "100%",
-            width: "100%", // Not required, but can be useful
-          }}>
-            <Layout className="profile" style={{ display: "flex", paddingLeft: "0px"}}>
+      <div className="main">
+        <div className="main__control-panel">
+          <ControlPanel/>
+        </div>
+        <div className="main__content-box">
+            <Layout className="profile">
               <Profile profile={profile} profilePosts={profilePosts} users={users}/>
             </Layout>
-          </Col>
-          <Col style={{
-            flex: 1,
-            height: "100%",
-            width: "100%",
-          }}>
+        </div>
             {/* Правое боковое меню */}
             <RecommendationPanel/>
-          </Col>
-        </Row>
-      </Layout>
+        {/*</Row>*/}
+      {/*</Layout>*/}
+        </div>
     </ProfilePostsContext.Provider>
   )
 }

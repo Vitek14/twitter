@@ -1,8 +1,23 @@
-.control-panel {
-  max-width: 483px;
-  min-width: 0;
-  height: 100%;
-  width: 100%;
+.main {
+  display: flex;
+  justify-content: center;  // Probably, won't work...
+  min-height: 100vh;
+  background-color: var(--color-bg-base);
+
+  &__control-panel {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    height: 100vh;
+    flex-grow: 1;
+  }
+
+  &__content-box {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+    max-width: 600px;
+  }
 }
 
 .profile {

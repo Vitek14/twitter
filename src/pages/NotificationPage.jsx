@@ -5,7 +5,7 @@ import ControlPanel from "../components/common_components/new_control_panel/Cont
 import {useEffect, useState} from "react";
 import Api from "../api.js";
 import {useNavigate} from "react-router-dom";
-import RecommendationPanel from "../components/common_components/new_recommendation_panel/ReccomendationPanel.jsx";
+import RecommendationPanel from "../components/common_components/new_recommendation_panel/RecommendationPanel.jsx";
 
 const {Sider, Content,  Header, Footer} = Layout;
 const {Search} = Input;
