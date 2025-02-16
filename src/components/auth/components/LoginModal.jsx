@@ -5,10 +5,41 @@ import GoogleIcon from "@mui/icons-material/Google";
 import AppleIcon from "@mui/icons-material/Apple";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
+import Api from "../../../api.js";
+import {jwtDecode} from 'jwt-decode';
 
 const {Title} = Typography;
 
 const LoginModal = (props) => {
+  const [browserName, setBrowserName] = useState('');
+  const [ip, setIp] = useState('');
+
+  useEffect(() => {
+    // Получение названия браузера
+    const userAgent = navigator.userAgent;
+    let name = 'Unknown Browser';
+    if (userAgent.includes('Firefox')) {
+      name = 'Mozilla Firefox';
+    } else if (userAgent.includes('Chrome')) {
+      name = 'Google Chrome';
+    } else if (userAgent.includes('Safari')) {
+      name = 'Safari';
+    } else if (userAgent.includes('Opera') || userAgent.includes('OPR')) {
+      name = 'Opera';
+    } else if (userAgent.includes('MSIE') || userAgent.includes('Trident')) {
+      name = 'Internet Explorer';
+    }
+    setBrowserName(name);
+
+    // Получение IP-адреса
+    // fetch('https://api.ipify.org?format=json')
+    //   .then(response => response.json())
+    //   .then(data => setIp(data.ip))
+    //   .catch(error => console.error('Error fetching the IP address:', error));
+  }, []);
+
+  console.log(`IP IS: ${ip}`)
   const [messageApi, contextHolder] = message.useMessage();
 
   const navigate = useNavigate();
@@ -22,6 +53,25 @@ const LoginModal = (props) => {
       // Если запрос успешен
       message.success("Успех!");
       localStorage.setItem('token', response.data.token);
+      // console.log(`DATA IS ${response.data}`);
+      // console.log(token);
+
+      // Декодирование токена
+      const decodedToken = jwtDecode(response.data.token);
+      console.log(`Decoded Token: `, decodedToken);
+      console.log(`USER_ID = ${decodedToken.user_id}`);
+
+      const login_info = await Api.LoginInfo.create_info({
+        user_id: decodedToken.user_id,
+        browser: browserName,
+        ip: null
+      });
+
+      await Api.Notifications.create({
+        user_id: decodedToken.user_id,
+        type: "Login",
+        parent_id: login_info.data.id,
+      })
       navigate("/profile");
     } catch (error) {
       if (error.response && error.response.status === 400) {

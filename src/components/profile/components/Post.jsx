@@ -1,156 +1,183 @@
-import {Avatar, Button, Col, Image, Row, Card, Typography, Space} from "antd";
-import {CheckCircleTwoTone, LikeOutlined, MessageOutlined, MoreOutlined, RetweetOutlined} from "@ant-design/icons";
-import ReactMarkdown from 'react-markdown';
-import ReactPlayer from 'react-player'
-import "../profile.scss"
+import React, { useState } from "react";
+import { Avatar, Button, Card, Image, Modal, List, Input, Typography } from "antd";
+import {
+  CheckCircleTwoTone,
+  RetweetOutlined,
+  LikeOutlined,
+  MessageOutlined,
+  MoreOutlined,
+} from "@ant-design/icons";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import EqualizerIcon from "@mui/icons-material/Equalizer";
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import ShareIcon from "@mui/icons-material/Share";
 
-const { Text, Title, Paragraph } = Typography;
+const { Text } = Typography;
 
-const Post = ({post, user}) => {
+const Post = ({ post, user }) => {
+  const [isCommentsModalVisible, setIsCommentsModalVisible] = useState(false);
+  const [comments, setComments] = useState([
+    // Пример начальных комментариев
+    { id: 1, author: "John Doe", text: "Отличный пост!" },
+    { id: 2, author: "Jane Smith", text: "Я полностью с этим согласен!" },
+  ]);
+  const [newComment, setNewComment] = useState("");
+
   const isImage = (url) => {
     return url.match(/\.(jpeg|jpg|gif|png)$/) != null;
   };
 
-  const isVideo = (url) => {
-    return url.match(/\.(mp4|webm|ogg)$/) != null;
+  const toggleCommentsModal = () => {
+    setIsCommentsModalVisible(!isCommentsModalVisible);
+  };
+
+  const handleAddComment = () => {
+    if (newComment.trim()) {
+      setComments([
+        ...comments,
+        { id: comments.length + 1, author: "Вы", text: newComment },
+      ]);
+      setNewComment(""); // Очистка поля
+    }
   };
 
   return (
-    <Card
-      style={{
-        width: "100%",
-        margin: "16px 0",
-        borderRadius: "8px",
-        overflow: "hidden", // Ensures smooth cropping of child elements
-      }}
-      bordered={true}
-      bodyStyle={{ padding: "16px" }} // Padding customization for the Card body
-    >
-      {/* Header Section */}
-      <div style={{ display: "flex", alignItems: "center", marginBottom: "8px" }}>
-        {/* Avatar */}
-        <Avatar
-          src={user.avatar_url}
-          size="large"
-          style={{ backgroundColor: "#87d068", minWidth: "50px", minHeight: "50px", alignSelf: "start", marginTop: "5px" }}
-        >
-          {/*{firstName[0]?.toUpperCase()}*/}
-        </Avatar>
-
-        {/* User Details */}
-        <div style={{ marginLeft: "12px" }}>
-          <Text strong style={{ fontSize: "16px", display: "block" }}>
-            {`${user.first_name} ${user.last_name}`} {user.verified && <CheckCircleTwoTone/>} <Text type="secondary">@{user.user_name}</Text>
-          </Text>
-          {post.content && (
-            <div style={{ marginBottom: "12px" }}>
-              <Text>{post.content}</Text>
-            </div>
-          )}
-          {/*<Text type="secondary" style={{ fontSize: "12px" }}>*/}
-          {/*  26.05.2006*/}
-          {/*</Text>*/}
+    <>
+      <Card
+        hoverable
+        style={{
+          width: "100%",
+          borderRadius: "8px",
+        }}
+        bordered={true}
+      >
+        {/* Header Section */}
+        <div style={{ display: "flex", alignItems: "center", marginBottom: "8px" }}>
+          <Avatar
+            src={user.avatar_url}
+            size="large"
+            style={{ minWidth: "50px", minHeight: "50px", alignSelf: "start", marginTop: "5px" }}
+          />
+          {/* User Details */}
+          <div style={{ marginLeft: "12px" }}>
+            <Text strong style={{ fontSize: "16px", display: "block" }}>
+              {`${user.first_name} ${user.last_name}`} {user.verified && <CheckCircleTwoTone />}{" "}
+              <Text type="secondary">@{user.user_name}</Text>
+            </Text>
+            {post.content && (
+              <div style={{ marginBottom: "12px" }}>
+                <Text>{post.content}</Text>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
 
-      {/* Post Content */}
+        {/* Post Image */}
+        {post.image_url && (
+          <Image
+            src={post.image_url}
+            alt="Post image"
+            style={{
+              width: "100%",
+              maxHeight: "400px",
+              objectFit: "cover",
+              borderRadius: "8px",
+            }}
+          />
+        )}
 
-       {/*Post Image (If provided) */}
-      {post.image_url && (
-        <Image
-          src={post.image_url}
-          alt="Post image"
+        {/* Action Buttons */}
+        <div
           style={{
-            width: "100%", // Make image fit the width of the post
-            maxHeight: "400px",
-            objectFit: "cover",
-            borderRadius: "8px",
+            marginTop: "16px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
           }}
-          preview={false}
+        >
+          <div style={{ display: "flex", gap: "8px" }}>
+            <Button
+              type="text"
+              icon={<ChatBubbleOutlineIcon style={{ fontSize: "15px" }} />}
+              style={{ color: "#1890ff" }}
+              onClick={toggleCommentsModal} // Открытие комментариев
+            >
+              {post.comments_count}
+            </Button>
+            <Button
+              type="text"
+              icon={<RetweetOutlined />}
+              style={{ color: "#1890ff" }}
+            >
+              {post.reposts_count}
+            </Button>
+            <Button
+              type="text"
+              icon={<FavoriteBorderIcon style={{ fontSize: "15px" }} />}
+              style={{ color: "#1890ff" }}
+            >
+              {post.likes_count}
+            </Button>
+            <Button
+              type="text"
+              icon={<EqualizerIcon style={{ fontSize: "15px" }} />}
+              style={{ color: "#1890ff" }}
+            >
+              {post.views_count}
+            </Button>
+          </div>
+
+          <div style={{ display: "flex", gap: "8px", marginLeft: "auto" }}>
+            <Button
+              type="text"
+              icon={<BookmarkBorderIcon style={{ fontSize: "15px" }} />}
+              style={{ color: "#1890ff" }}
+            />
+            <Button
+              type="text"
+              icon={<ShareIcon style={{ fontSize: "15px" }} />}
+              style={{ color: "#1890ff" }}
+            />
+          </div>
+        </div>
+      </Card>
+
+      {/* Модальное окно с комментариями */}
+      <Modal
+        title="Комментарии"
+        visible={isCommentsModalVisible}
+        onCancel={toggleCommentsModal}
+        footer={null}
+      >
+        <List
+          dataSource={comments}
+          renderItem={(item) => (
+            <List.Item>
+              <List.Item.Meta
+                avatar={<Avatar>{item.author[0]}</Avatar>}
+                title={<Text strong>{item.author}</Text>}
+                description={item.text}
+              />
+            </List.Item>
+          )}
         />
-      )}
-
-      {/* Action Buttons */}
-      <div style={{ marginTop: "16px" }}>
-        <Space>
-          {/* Like Button */}
-          <Button
-            type="text"
-            icon={<LikeOutlined />}
-            style={{ color: "#1890ff" }}
-          >
-            2
-          </Button>
-
-          {/* Comment Button */}
-          <Button
-            type="text"
-            icon={<MessageOutlined />}
-            style={{ color: "#1890ff" }}
-          >
-            34
-          </Button>
-        </Space>
-      </div>
-    </Card>
-    // <div className="post">
-    //   <Row className="post__info-row">
-    //     <Col className="post__info-col">
-    //       {post.parent_id && (
-    //         <RetweetOutlined className="post__retweet-icon"/>
-    //       )}
-    //       <Avatar size={50} src={user.avatar_url}/>
-    //     </Col>
-    //     <Col>
-    //       {post.parent_id && (
-    //         <Text className="post__reposted-text">
-    //         You reposted
-    //       </Text>
-    //       )}
-    //     </Col>
-    //   </Row>
-    //   <Row className="post__bio-row">
-    //     <Col flex="auto" className="post__user-info">
-    //       <Text className="post__fullname">
-    //         {user.first_name}
-    //         {user.last_name && " " + user.last_name}
-    //       </Text>
-    //       {user.verified && <CheckCircleTwoTone style={{fontSize: "15px"}} />}
-    //       <Text className="post__publish-text">
-    //         @{user.user_name} · {post.date}
-    //       </Text>
-    //     </Col>
-    //     <Col flex="none" className="post__more">
-    //       <MoreOutlined/>
-    //     </Col>
-    //   </Row>
-    //   <Row className="post__content-row">
-    //     <Col>
-    //       <Text className="post__content-text">
-    //         <ReactMarkdown>
-    //           {post.content}
-    //         </ReactMarkdown>
-    //       </Text>
-    //     </Col>
-    //   </Row>
-    //   {post.image_url &&
-    //     <Row className="post__image-row">
-    //       {/*{isImage(post.image_url) && <Image className="post__image" src={post.image_url}/>}*/}
-    //       {/*{console.log(isVideo(post.image_url))}*/}
-    //       {/*{isVideo(post.image_url) && <ReactPlayer url={post.image_url}/>}*/}
-    //       <Image className="post__image" src={post.image_url}/>
-    //       {/*<ReactPlayer url={post.image_url}/>*/}
-    //     </Row>
-    //   }
-    //   <Row>
-    //     <Col>
-    //       <Button>
-    //         Hello world
-    //       </Button>
-    //     </Col>
-    //   </Row>
-    // </div>
-  )
-}
+        <Input.TextArea
+          placeholder="Напишите комментарий..."
+          value={newComment}
+          onChange={(e) => setNewComment(e.target.value)}
+          rows={3}
+        />
+        <Button
+          type="primary"
+          style={{ marginTop: "8px", float: "right" }}
+          onClick={handleAddComment}
+        >
+          Отправить
+        </Button>
+      </Modal>
+    </>
+  );
+};
 
 export default Post;

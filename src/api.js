@@ -15,6 +15,7 @@ const Profile = {
 }
 
 const Notifications = {
+  create: (body) => axios.post("/notifications/", body),
   get: () => axios.get("/notifications/")
 }
 
@@ -22,8 +23,14 @@ const Posts = {
   create_post: (body) => axios.post("/user_posts", body)
 }
 
+const LoginInfo = {
+  create_info: (body) => axios.post("/login_info", body),
+  delete_info: (body) => axios.delete("/login_info", body),
+}
+
 export default {
   Profile,
   Notifications,
-  Posts
+  Posts,
+  LoginInfo
 }

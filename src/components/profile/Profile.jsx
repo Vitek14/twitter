@@ -43,17 +43,10 @@ const Profile = ({profile, profilePosts, users}) => {
   // const [profile, setProfile] = useState([]);
   console.log("Profile is: ", profile)
 
+   // Сортируем посты по created_at от новых к старым
+  const sortedProfilePosts = [...profilePosts].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  console.log(sortedProfilePosts);
 
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:5000/api/profile/")
-  //     .then(res => {
-  //       setProfile(res.data);
-  //     })
-  //     .catch(err => {
-  //       console.error(err);
-  //     });
-  // }, []);
   const fallbackImageUrl =
     "../../../public/404_avatar.png";
   const bannerFallbackUrl =
@@ -90,7 +83,7 @@ const Profile = ({profile, profilePosts, users}) => {
         <Bio profile={profile} />
         <Content>
           <ContentTabs />
-          {profilePosts.map((post, key) => {
+          {sortedProfilePosts.map((post, key) => {
             const user = users[post.user_id]; // Получаем пользователя из состояния
             return (
               user && (
