@@ -1,44 +1,56 @@
 import React, { useState } from "react";
-import { Avatar, Button, Card, Image, Modal, List, Input, Typography } from "antd";
+import { Avatar, Button, Card, Image, Typography } from "antd";
 import {
   CheckCircleTwoTone,
   RetweetOutlined,
-  LikeOutlined,
-  MessageOutlined,
-  MoreOutlined,
 } from "@ant-design/icons";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
-import EqualizerIcon from "@mui/icons-material/Equalizer";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import ShareIcon from "@mui/icons-material/Share";
+import EqualizerIcon from "@mui/icons-material/Equalizer";
+import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import Api from "../../../api.js";
+import CommentModal from "./CommentModal";
 
 const { Text } = Typography;
 
-const Post = ({ post, user }) => {
+const Post = ({ post, user, profile }) => {
   const [isCommentsModalVisible, setIsCommentsModalVisible] = useState(false);
-  const [comments, setComments] = useState([
-    // Пример начальных комментариев
-    { id: 1, author: "John Doe", text: "Отличный пост!" },
-    { id: 2, author: "Jane Smith", text: "Я полностью с этим согласен!" },
-  ]);
-  const [newComment, setNewComment] = useState("");
-
-  const isImage = (url) => {
-    return url.match(/\.(jpeg|jpg|gif|png)$/) != null;
-  };
+  const [liked, setLiked] = useState(post.is_liked);
 
   const toggleCommentsModal = () => {
     setIsCommentsModalVisible(!isCommentsModalVisible);
   };
 
-  const handleAddComment = () => {
-    if (newComment.trim()) {
-      setComments([
-        ...comments,
-        { id: comments.length + 1, author: "Вы", text: newComment },
-      ]);
-      setNewComment(""); // Очистка поля
+  const handleLike = async () => {
+    try {
+      await Api.Posts.like({
+        user_id: profile.id,
+        post_id: post.id,
+      });
+      setLiked(true);
+      post.likes_count += 1;
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        setLiked(true);
+        post.likes_count += 1;
+      }
+      console.error("Error liking post:", error);
+    }
+  };
+
+  const handleUnlike = async () => {
+    try {
+      await Api.Posts.unlike(post.id, user.id);
+      setLiked(false);
+      post.likes_count -= 1;
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        setLiked(false);
+        post.likes_count -= 1;
+      }
+      console.error("Error unliking post:", error);
     }
   };
 
@@ -46,10 +58,7 @@ const Post = ({ post, user }) => {
     <>
       <Card
         hoverable
-        style={{
-          width: "100%",
-          borderRadius: "8px",
-        }}
+        style={{ width: "100%", borderRadius: "8px" }}
         bordered={true}
       >
         {/* Header Section */}
@@ -57,12 +66,12 @@ const Post = ({ post, user }) => {
           <Avatar
             src={user.avatar_url}
             size="large"
-            style={{ minWidth: "50px", minHeight: "50px", alignSelf: "start", marginTop: "5px" }}
+            style={{ minWidth: "50px", minHeight: "50px", marginTop: "5px" }}
           />
-          {/* User Details */}
           <div style={{ marginLeft: "12px" }}>
             <Text strong style={{ fontSize: "16px", display: "block" }}>
-              {`${user.first_name} ${user.last_name}`} {user.verified && <CheckCircleTwoTone />}{" "}
+              {`${user.first_name} ${user.last_name}`}{" "}
+              {user.verified && <CheckCircleTwoTone />}{" "}
               <Text type="secondary">@{user.user_name}</Text>
             </Text>
             {post.content && (
@@ -101,81 +110,44 @@ const Post = ({ post, user }) => {
               type="text"
               icon={<ChatBubbleOutlineIcon style={{ fontSize: "15px" }} />}
               style={{ color: "#1890ff" }}
-              onClick={toggleCommentsModal} // Открытие комментариев
+              onClick={toggleCommentsModal}
             >
               {post.comments_count}
             </Button>
-            <Button
-              type="text"
-              icon={<RetweetOutlined />}
-              style={{ color: "#1890ff" }}
-            >
+            <Button type="text" icon={<RetweetOutlined />} style={{ color: "#1890ff" }}>
               {post.reposts_count}
             </Button>
             <Button
               type="text"
-              icon={<FavoriteBorderIcon style={{ fontSize: "15px" }} />}
+              icon={
+                liked ? (
+                  <FavoriteIcon style={{ fontSize: "15px", color: "red" }} />
+                ) : (
+                  <FavoriteBorderIcon style={{ fontSize: "15px" }} />
+                )
+              }
               style={{ color: "#1890ff" }}
+              onClick={liked ? handleUnlike : handleLike}
             >
               {post.likes_count}
             </Button>
-            <Button
-              type="text"
-              icon={<EqualizerIcon style={{ fontSize: "15px" }} />}
-              style={{ color: "#1890ff" }}
-            >
+            <Button type="text" icon={<EqualizerIcon style={{ fontSize: "15px" }} />} style={{ color: "#1890ff" }}>
               {post.views_count}
             </Button>
           </div>
-
           <div style={{ display: "flex", gap: "8px", marginLeft: "auto" }}>
-            <Button
-              type="text"
-              icon={<BookmarkBorderIcon style={{ fontSize: "15px" }} />}
-              style={{ color: "#1890ff" }}
-            />
-            <Button
-              type="text"
-              icon={<ShareIcon style={{ fontSize: "15px" }} />}
-              style={{ color: "#1890ff" }}
-            />
+            <Button type="text" icon={<BookmarkBorderIcon style={{ fontSize: "15px" }} />} style={{ color: "#1890ff" }} />
+            <Button type="text" icon={<ShareIcon style={{ fontSize: "15px" }} />} style={{ color: "#1890ff" }} />
           </div>
         </div>
       </Card>
 
-      {/* Модальное окно с комментариями */}
-      <Modal
-        title="Комментарии"
+      <CommentModal
         visible={isCommentsModalVisible}
         onCancel={toggleCommentsModal}
-        footer={null}
-      >
-        <List
-          dataSource={comments}
-          renderItem={(item) => (
-            <List.Item>
-              <List.Item.Meta
-                avatar={<Avatar>{item.author[0]}</Avatar>}
-                title={<Text strong>{item.author}</Text>}
-                description={item.text}
-              />
-            </List.Item>
-          )}
-        />
-        <Input.TextArea
-          placeholder="Напишите комментарий..."
-          value={newComment}
-          onChange={(e) => setNewComment(e.target.value)}
-          rows={3}
-        />
-        <Button
-          type="primary"
-          style={{ marginTop: "8px", float: "right" }}
-          onClick={handleAddComment}
-        >
-          Отправить
-        </Button>
-      </Modal>
+        initialComments={post.comments}
+        profile={profile}
+      />
     </>
   );
 };
