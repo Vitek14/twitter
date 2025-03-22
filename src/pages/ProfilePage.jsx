@@ -22,39 +22,19 @@ const ProfilePage = () => {
   const [profilePosts, setProfilePosts] = useState([]);
 
   useEffect(() => {
-    // Получаем данные постов и пользователей синхронно
-    const fetchHomeData = () => {
-      axios.get("http://localhost:5000/api/home/")
-        .then(res => {
-          setProfilePosts(res.data);
-          return res.data;
-        })
-        .then(posts => {
-          // Получаем уникальные ID пользователей
-          const userIds = [...new Set(posts.map(post => post.user_id))];
+    Api.Home.get().then((res) => {
+      setProfilePosts(res.data);
 
-          // Получаем данные пользователей
-          const userPromises = userIds.map(userId =>
-            axios.get(`http://localhost:5000/api/users/${userId}`)
-          );
-
-          return Promise.all(userPromises);
-        })
-        .then(userResponses => {
-          const usersMap = userResponses.reduce((acc, userResponse) => {
-            acc[userResponse.data.id] = userResponse.data;
-            return acc;
-          }, {});
-          setUsers(usersMap);
-        })
-        .catch(error => {
-          console.error('Ошибка при получении данных:', error);
-        });
-    };
-
-    fetchHomeData();
+      const users = [...new Set(res.data.map(post => post.user))];
+      console.log("ЮЗЕРЫ:");
+      console.log(users);
+      setUsers(users);
+    }).catch(err => {
+      localStorage.deleteItem('token');
+      navigate("/login");
+      console.error(err);
+    });
   }, []);
-
 
   useEffect(() => {
     Api.Profile.get().then((res) => {
@@ -81,8 +61,6 @@ const ProfilePage = () => {
         </div>
             {/* Правое боковое меню */}
             <RecommendationPanel/>
-        {/*</Row>*/}
-      {/*</Layout>*/}
         </div>
     </ProfilePostsContext.Provider>
   )
