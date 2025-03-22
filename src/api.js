@@ -14,13 +14,19 @@ const Profile = {
   get: () => axios.get("/profile/")
 }
 
+const Home = {
+  get: () => axios.get("/home")
+}
+
 const Notifications = {
   create: (body) => axios.post("/notifications/", body),
   get: () => axios.get("/notifications/")
 }
 
 const Posts = {
-  create_post: (body) => axios.post("/user_posts", body)
+  create_post: (body) => axios.post("/user_posts", body),
+  like: (body) => axios.post("/user_posts/like", body),
+  unlike: (post_id, user_id) => axios.delete("/user_posts/" + post_id + "/unlike/" + user_id),
 }
 
 const LoginInfo = {
@@ -32,5 +38,6 @@ export default {
   Profile,
   Notifications,
   Posts,
-  LoginInfo
+  LoginInfo,
+  Home
 }
