@@ -48,9 +48,9 @@ const Profile = ({profile, profilePosts, users}) => {
   console.log(sortedProfilePosts);
 
   const fallbackImageUrl =
-    "../../../public/404_avatar.png";
+    "../../../404_avatar.png";
   const bannerFallbackUrl =
-    "../../../public/404_banner.png"; // Новый fallback URL для баннера
+    "../../../404_banner.png"; // Новый fallback URL для баннера
 
   return (
     <Layout className="profile">
@@ -58,7 +58,6 @@ const Profile = ({profile, profilePosts, users}) => {
       <div className="profile__content">
         <Row>
           <Col flex="auto">
-            <Banner profile_image={profile.banner_url} />
             <FallbackImage
               src={profile.banner_url}
               fallbackSrc={bannerFallbackUrl} // Используется отдельный URL для fallback баннера
@@ -91,6 +90,7 @@ const Profile = ({profile, profilePosts, users}) => {
                   key={key}
                   post={post}
                   user={user} // Передаем пользователя в компонент Post
+                  profile={profile}
                 />
               )
             );
