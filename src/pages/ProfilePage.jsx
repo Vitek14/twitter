@@ -52,7 +52,9 @@ const ProfilePage = () => {
     <ProfilePostsContext.Provider value={{ profilePosts, setProfilePosts }}>
       <div className="main">
         <div className="main__control-panel">
-          <ControlPanel/>
+          <ControlPanel
+            profile={profile}
+          />
         </div>
         <div className="main__content-box">
             <Layout className="profile">

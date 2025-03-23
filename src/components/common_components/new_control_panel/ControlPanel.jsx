@@ -9,13 +9,42 @@ import {
   SearchOutlined, UserOutlined,
   XOutlined
 } from "@ant-design/icons";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import NewPostModal from "../control_panel/components/NewPostModal.jsx"
 
+const FallbackImage = ({ src, fallbackSrc, isAvatar, ...props }) => {
+  const [imageUrl, setImageUrl] = useState(src || fallbackSrc);
+  const [error, setError] = useState(false);
 
-const ControlPanel = () => {
+  useEffect(() => {
+    setImageUrl(src || fallbackSrc);
+    setError(false);
+  }, [src, fallbackSrc]);
+
+  const handleError = () => {
+    setError(true);
+    setImageUrl(fallbackSrc);
+  };
+
+  if (isAvatar) {
+    return <Avatar size={40} src={imageUrl} onError={handleError} {...props} />;
+  }
+
+  return (
+    <img
+      src={imageUrl}
+      onError={handleError}
+      alt="Banner"
+      style={{ width: "100%", height: "auto", ...props.style }}
+    />
+  );
+};
+
+const fallbackImageUrl =
+    "../../../public/404_avatar.png";
+
+const ControlPanel = ({profile}) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
-
   const showModal = () => {
     setIsModalVisible(true); // Открываем модальное окно
   };
@@ -83,17 +112,23 @@ const ControlPanel = () => {
         </div>
         <div className="control-panel__box__footer">
           <div className="control-panel__box__footer__avatar">
-            <Avatar size={50} src="../../../public/404_avatar.png"/>
+            {/*<Avatar size={50} src="../../../public/404_avatar.png"/>*/}
+            <FallbackImage
+              src={profile.avatar_url}
+              fallbackSrc={fallbackImageUrl} // Используется отдельный URL для fallback баннера
+              isAvatar={true}
+              // style={{ width: "100%",objectFit: "cover" }}
+            />
           </div>
           <div className="control-panel__box__footer__info">
             <div className="control-panel__box__footer__info__fullname">
               <Typography.Title level={5}>
-                Test
+                {profile.first_name + " " + profile.last_name}
               </Typography.Title>
             </div>
             <div className="control-panel__box__footer__info__username">
               <Typography.Paragraph level={5}>
-                Another Test
+                @{profile.user_name}
               </Typography.Paragraph>
             </div>
           </div>
