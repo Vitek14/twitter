@@ -23,10 +23,21 @@ const Notifications = {
   get: () => axios.get("/notifications/")
 }
 
+const Comments = {
+  create: (body) => axios.post("/comments/", body),
+  update: (id, body) => axios.patch("/comments/" + id, body),
+  delete: (id) => axios.delete("/comments/" + id),
+}
+
 const Posts = {
   create_post: (body) => axios.post("/user_posts", body),
   like: (body) => axios.post("/user_posts/like", body),
   unlike: (post_id, user_id) => axios.delete("/user_posts/" + post_id + "/unlike/" + user_id),
+}
+
+const Login = {
+  login: (body) => axios.post("/login", body),
+  sign_up: (body) => axios.post("/sign_up", body),
 }
 
 const LoginInfo = {
@@ -39,5 +50,8 @@ export default {
   Notifications,
   Posts,
   LoginInfo,
-  Home
+  Home,
+  Comments,
+  Login,
+  updateToken  // Experimental!!!
 }

@@ -2,10 +2,12 @@
 import React, { useState, useEffect } from "react";
 import { Modal, List, Input, Button, Avatar, Typography } from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import Api from "../../../api.js";
+
 
 const { Text } = Typography;
 
-const CommentModal = ({ visible, onCancel, initialComments, profile }) => {
+const CommentModal = ({ visible, onCancel, initialComments, profile, post }) => {
   // Локальное состояние для комментариев
   const [comments, setComments] = useState(initialComments || []);
   const [newComment, setNewComment] = useState("");
@@ -18,10 +20,15 @@ const CommentModal = ({ visible, onCancel, initialComments, profile }) => {
   }, [initialComments]);
 
   // Добавление нового комментария
-  const handleAddComment = () => {
+  const handleAddComment = async () => {
     if (newComment.trim()) {
+      const response = await Api.Comments.create({
+        user_id: profile.id,
+        post_id: post.id,
+        content: newComment,
+      })
       const commentData = {
-        id: comments.length + 1, // В реальном случае id возвращается сервером
+        id: response.data.id, // В реальном случае id возвращается сервером
         content: newComment,
         user: {
           id: profile.id,
@@ -41,15 +48,18 @@ const CommentModal = ({ visible, onCancel, initialComments, profile }) => {
   };
 
   // Сохранение изменений комментария
-  const handleSaveEdit = () => {
+  const handleSaveEdit = async () => {
     setComments(
       comments.map((comment) =>
         comment.id === editingCommentId
-          ? { ...comment, content: editingCommentText }
+          ? {...comment, content: editingCommentText}
           : comment
       )
     );
     // Здесь можно добавить вызов API для сохранения изменений
+    await Api.Comments.update(editingCommentId, {
+      content: editingCommentText,
+    })
     setEditingCommentId(null);
     setEditingCommentText("");
   };
@@ -61,9 +71,10 @@ const CommentModal = ({ visible, onCancel, initialComments, profile }) => {
   };
 
   // Удаление комментария
-  const handleDelete = (commentId) => {
+  const handleDelete = async (commentId) => {
     setComments(comments.filter((comment) => comment.id !== commentId));
     // Здесь можно добавить вызов API для удаления комментария
+    await Api.Comments.delete(commentId);
   };
 
   return (

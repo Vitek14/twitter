@@ -3,6 +3,7 @@ import {CloseOutlined, XOutlined} from "@ant-design/icons";
 import "../auth.scss";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import Api from "../../../api.js";
 
 const {Title, Paragraph} = Typography;
 
@@ -11,25 +12,26 @@ const SignUpModal = (props) => {
 
   const onFinish = async (values) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/sign_up/', {
+      const response = await Api.Login.sign_up({
         email: values.email,
         password: values.password,
         first_name: values.first_name,
         last_name: values.last_name,
         user_name: values.first_name + '_' + values.last_name,
-      });
+      })
 
       // Если запрос успешен
       message.success("Секунду...");
       try {
-        const response = await axios.post('http://localhost:5000/api/login', {
+        const response = await Api.Login.login({
           email: values.email,
           password: values.password,
-        });
+        })
 
         // Если запрос успешен
         message.success("Успех!");
         localStorage.setItem('token', response.data.token);
+        await Api.updateToken();
         navigate("/profile");
       } catch (error) {
         if (error.response && error.response.status === 400) {

@@ -147,6 +147,7 @@ const Post = ({ post, user, profile }) => {
         onCancel={toggleCommentsModal}
         initialComments={post.comments}
         profile={profile}
+        post={post}
       />
     </>
   );

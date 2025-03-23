@@ -45,14 +45,19 @@ const LoginModal = (props) => {
   const navigate = useNavigate();
   const onFinish = async (values) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/login', {
+      const response = await Api.Login.login({
         email: values.username,
         password: values.password,
-      });
+      })
+      // const response = await axios.post('http://localhost:5000/api/login', {
+      //   email: values.username,
+      //   password: values.password,
+      // });
 
       // Если запрос успешен
       message.success("Успех!");
       localStorage.setItem('token', response.data.token);
+      await Api.updateToken();
       // console.log(`DATA IS ${response.data}`);
       // console.log(token);
 
