@@ -30,8 +30,8 @@ const SignUpModal = (props) => {
 
         // Если запрос успешен
         message.success("Успех!");
-        localStorage.setItem('token', response.data.token);
-        await Api.updateToken();
+        // localStorage.setItem('token', response.data.token);
+        // await Api.updateToken();
         navigate("/profile");
       } catch (error) {
         if (error.response && error.response.status === 400) {

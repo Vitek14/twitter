@@ -1,4 +1,4 @@
-import {Avatar, Button, Flex, Image, Layout, Typography} from "antd";
+import {Avatar, Button, Dropdown, Flex, Image, Layout, Typography} from "antd";
 import "./controlpanel.scss"
 import {
   BellOutlined,
@@ -11,6 +11,8 @@ import {
 } from "@ant-design/icons";
 import React, {useEffect, useState} from "react";
 import NewPostModal from "../control_panel/components/NewPostModal.jsx"
+import {useNavigate} from "react-router-dom";
+import Api from "../../../api.js";
 
 const FallbackImage = ({ src, fallbackSrc, isAvatar, ...props }) => {
   const [imageUrl, setImageUrl] = useState(src || fallbackSrc);
@@ -43,8 +45,19 @@ const FallbackImage = ({ src, fallbackSrc, isAvatar, ...props }) => {
 const fallbackImageUrl =
     "../../../public/404_avatar.png";
 
-const ControlPanel = ({profile}) => {
+const ControlPanel = ({profile=[]}) => {
+
+  // Experimental!
+  const [profileInfo, setProfile] = useState(profile);
+  if (profile.length === 0) {
+    Api.Profile.get().then((res) => {
+      setProfile(res.data);
+    });
+  }
+
+
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const navigate = useNavigate();
   const showModal = () => {
     setIsModalVisible(true); // Открываем модальное окно
   };
@@ -52,6 +65,31 @@ const ControlPanel = ({profile}) => {
   const handleClose = () => {
     setIsModalVisible(false); // Закрываем модальное окно
   };
+
+  // console.log("PROFILE: ", profile);
+
+  const handleMenuClick = (e) => {
+    if (e.key === 'settings') {
+      navigate('/settings');
+    } else if (e.key === 'logout') {
+      localStorage.removeItem('token');
+      navigate('/login');
+    }
+  };
+
+  const menuItems = [
+    {
+      key: 'settings',
+      label: 'Settings',
+    },
+    {
+      key: 'logout',
+      label: 'Logout',
+      danger: true,
+    },
+  ];
+
+  // console.log("PROFILE: ", profile)
 
   return (
     <div className="control-panel">
@@ -97,7 +135,7 @@ const ControlPanel = ({profile}) => {
               type="primary"
               shape="round"
               style={{
-                // width: "270px",
+                width: "270px",
                 height: "60px",
                 fontWeight: "bold",
                 fontSize: 16,
@@ -110,28 +148,39 @@ const ControlPanel = ({profile}) => {
             <NewPostModal open={isModalVisible} onClose={handleClose} />
           </Flex>
         </div>
-        <div className="control-panel__box__footer">
-          <div className="control-panel__box__footer__avatar">
-            {/*<Avatar size={50} src="../../../public/404_avatar.png"/>*/}
-            <FallbackImage
-              src={profile.avatar_url}
-              fallbackSrc={fallbackImageUrl} // Используется отдельный URL для fallback баннера
-              isAvatar={true}
-              // style={{ width: "100%",objectFit: "cover" }}
-            />
-          </div>
-          <div className="control-panel__box__footer__info">
-            <div className="control-panel__box__footer__info__fullname">
-              <Typography.Title level={5}>
-                {profile.first_name + " " + profile.last_name}
+        <div className="control-panel__box__footer"
+             style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+          <Flex align="center" gap={8}>
+            <div className="control-panel__box__footer__avatar">
+              <FallbackImage
+                src={profileInfo.avatar_url}
+                fallbackSrc={fallbackImageUrl}
+                isAvatar={true}
+              />
+            </div>
+            <div className="control-panel__box__footer__info">
+              <Typography.Title level={5} style={{margin: 0}}>
+                {profileInfo.first_name + " " + profileInfo.last_name}
               </Typography.Title>
+              <Typography.Text type="secondary">
+                @{profileInfo.user_name}
+              </Typography.Text>
             </div>
-            <div className="control-panel__box__footer__info__username">
-              <Typography.Paragraph level={5}>
-                @{profile.user_name}
-              </Typography.Paragraph>
-            </div>
-          </div>
+          </Flex>
+          <Dropdown
+            menu={{
+              items: menuItems,
+              onClick: handleMenuClick
+            }}
+            trigger={['click']}
+          >
+            <Button
+              type="text"
+              shape="circle"
+              icon={<MoreOutlined style={{fontSize: 20}}/>}
+              style={{marginRight: 8}}
+            />
+          </Dropdown>
         </div>
       </div>
     </div>

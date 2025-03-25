@@ -36,8 +36,14 @@ const Posts = {
 }
 
 const Login = {
-  login: (body) => axios.post("/login", body),
-  sign_up: (body) => axios.post("/sign_up", body),
+  login: (body) => axios.post("/login", body).then((res) => {
+    localStorage.setItem('token', res.data.token);
+    updateToken();
+  }),
+  sign_up: (body) => axios.post("/sign_up", body).then((res) => {
+    localStorage.setItem('token', res.data.token);
+    updateToken();
+  }),
 }
 
 const LoginInfo = {
