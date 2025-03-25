@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Avatar, Button, Card, Image, Typography } from "antd";
 import {
   CheckCircleTwoTone,
@@ -18,6 +19,8 @@ const { Text } = Typography;
 const Post = ({ post, user, profile }) => {
   const [isCommentsModalVisible, setIsCommentsModalVisible] = useState(false);
   const [liked, setLiked] = useState(post.is_liked);
+
+  const navigate = useNavigate();
 
   const toggleCommentsModal = () => {
     setIsCommentsModalVisible(!isCommentsModalVisible);
@@ -60,6 +63,7 @@ const Post = ({ post, user, profile }) => {
         hoverable
         style={{ width: "100%", borderRadius: "8px" }}
         bordered={true}
+        // onClick={() => {alert("hello world")}}
       >
         {/* Header Section */}
         <div style={{ display: "flex", alignItems: "center", marginBottom: "8px" }}>
@@ -110,7 +114,8 @@ const Post = ({ post, user, profile }) => {
               type="text"
               icon={<ChatBubbleOutlineIcon style={{ fontSize: "15px" }} />}
               style={{ color: "#1890ff" }}
-              onClick={toggleCommentsModal}
+              // onClick={toggleCommentsModal}
+              onClick={() => {navigate(`/post/${post.id}`)}}
             >
               {post.comments_count}
             </Button>

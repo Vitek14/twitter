@@ -31,6 +31,7 @@ const Comments = {
 
 const Posts = {
   create_post: (body) => axios.post("/user_posts", body),
+  get_post: (post_id) => axios.get("/user_posts/" + post_id),
   like: (body) => axios.post("/user_posts/like", body),
   unlike: (post_id, user_id) => axios.delete("/user_posts/" + post_id + "/unlike/" + user_id),
 }

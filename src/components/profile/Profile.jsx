@@ -52,6 +52,8 @@ const Profile = ({profile, profilePosts, users}) => {
   const bannerFallbackUrl =
     "../../../404_banner.png"; // Новый fallback URL для баннера
 
+
+  console.log("Reutrn profile.....")
   return (
     <Layout className="profile">
       <Overview profile={profile} />
@@ -83,7 +85,7 @@ const Profile = ({profile, profilePosts, users}) => {
         <Content>
           <ContentTabs />
           {sortedProfilePosts.map((post, key) => {
-            const user = users[post.user_id]; // Получаем пользователя из состояния
+            const user = users[post.user_id - 1]; // -1??? EXPERIMENTAL!!!
             return (
               user && (
                 <Post
