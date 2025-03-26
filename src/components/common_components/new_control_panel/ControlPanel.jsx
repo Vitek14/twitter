@@ -45,17 +45,7 @@ const FallbackImage = ({ src, fallbackSrc, isAvatar, ...props }) => {
 const fallbackImageUrl =
     "../../../public/404_avatar.png";
 
-const ControlPanel = ({profile=[]}) => {
-
-  // Experimental!
-  const [profileInfo, setProfile] = useState(profile);
-  if (profile.length === 0) {
-    Api.Profile.get().then((res) => {
-      setProfile(res.data);
-    });
-  }
-
-
+const ControlPanel = ({profileInfo}) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const navigate = useNavigate();
   const showModal = () => {

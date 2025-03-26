@@ -53,7 +53,7 @@ const ProfilePage = () => {
       <div className="main">
         <div className="main__control-panel">
           <ControlPanel
-            profile={profile}
+            profileInfo={profile}
           />
         </div>
         <div className="main__content-box">

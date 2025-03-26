@@ -5,7 +5,7 @@ import MessagePage from "./pages/MessagePage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import React from "react";
 import NotificationPage from "./pages/NotificationPage.jsx";
-import PostComponent from "./components/post/Post.jsx";
+import PostComponent from "./components/post/PostComponent.jsx";
 
 const SecuredRoute = ({children, ...rest}) => {
   if (localStorage.getItem("token") === null) {

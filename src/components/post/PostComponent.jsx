@@ -1,26 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import { Avatar, Card, Typography, Image, Button, List, Space } from 'antd';
 import { LikeOutlined, RetweetOutlined } from '@ant-design/icons';
 import ControlPanel from '../common_components/new_control_panel/ControlPanel';
 import RecommendationPanel from '../common_components/new_recommendation_panel/RecommendationPanel';
 
-import { useLocation } from "react-router-dom";
+import Api from "../../api.js";
 
 const { Text, Title } = Typography;
 
 const PostComponent = () => {
-  const [profile, setProfile] = useState([]);
-  const [post, setPost] = useState([]);
+ const [profile, setProfile] = useState([]);
+  const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   const { postId } = useParams();
   useEffect(() => {
     Api.Profile.get().then((res) => {
-      console.log("test")
+      console.log("PROFILE NOW: ", res.data);
       setProfile(res.data);
-      // setLoading(false);
     }).catch(err => {
-      localStorage.deleteItem('token');
+      console.log(err);
+      localStorage.removeItem('token');
       navigate("/login");
       console.error(err);
     });
@@ -31,7 +33,7 @@ const PostComponent = () => {
     Api.Posts.get_post(postId).then((res) => {
       setPost(res.data);
       console.log("post: ", res.data)
-      // setLoading(false);
+      setLoading(false);
     }).catch(err => {
       localStorage.deleteItem('token');
       navigate("/login");
@@ -39,27 +41,32 @@ const PostComponent = () => {
     });
   }, []);
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="main">
-      {/* Левый Sider */}
       <div className="main__control-panel">
-        <ControlPanel />
+        <ControlPanel
+          profileInfo={profile}
+        />
       </div>
 
         <div style={{ maxWidth: 800, margin: '0 auto' }}>
         {/* Post Header */}
-        <div style={{ marginBottom: 24 }}>
-            <Title level={4} style={{ marginBottom: 0 }}>
-            {profile.first_name} {profile.last_name}
-            </Title>
-            <Text type="secondary">@{profile.username}</Text>
-        </div>
+        {/*<div style={{ marginBottom: 24 }}>*/}
+        {/*    <Title level={4} style={{ marginBottom: 0 }}>*/}
+        {/*      {profile.first_name} {profile.last_name}*/}
+        {/*    </Title>*/}
+        {/*    <Text type="secondary">@{profile.user_name}</Text>*/}
+        {/*</div>*/}
 
         {/* Post Content */}
         <Card>
             <Space align="start" size={16} style={{ width: '100%' }}>
             {/* User Avatar */}
-            <Avatar size={48} src={post.user.profile_avatar} />
+            <Avatar size={48} src={post.user.avatar_url} />
 
             {/* Post Body */}
             <div style={{ flex: 1 }}>
@@ -100,7 +107,7 @@ const PostComponent = () => {
                 renderItem={comment => (
                     <List.Item style={{ paddingLeft: 0 }}>
                     <List.Item.Meta
-                        avatar={<Avatar src={comment.user.profile_avatar} />}
+                        avatar={<Avatar src={comment.user.avatar_url} />}
                         title={<Text strong>{comment.user.first_name}</Text>}
                         description={comment.content}
                     />

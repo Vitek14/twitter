@@ -115,7 +115,7 @@ const Post = ({ post, user, profile }) => {
               icon={<ChatBubbleOutlineIcon style={{ fontSize: "15px" }} />}
               style={{ color: "#1890ff" }}
               // onClick={toggleCommentsModal}
-              onClick={() => {navigate(`/post/${post.id}`)}}
+              onClick={() => {navigate(`/post/${post.id}`);}}
             >
               {post.comments_count}
             </Button>
