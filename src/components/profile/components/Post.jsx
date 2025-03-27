@@ -20,24 +20,25 @@ const { Text } = Typography;
 const VIEWED_POSTS_KEY = "viewedPosts";
 
 // Вспомогательные функции для работы с localStorage
-const getViewedPosts = () => {
-  const stored = localStorage.getItem(VIEWED_POSTS_KEY);
-  return stored ? JSON.parse(stored) : [];
-};
+// const getViewedPosts = () => {
+//   const stored = localStorage.getItem(VIEWED_POSTS_KEY);
+//   return stored ? JSON.parse(stored) : [];
+// };
 
-const addViewedPost = (postId) => {
-  const viewed = getViewedPosts();
-  if (!viewed.includes(postId)) {
-    viewed.push(postId);
-    localStorage.setItem(VIEWED_POSTS_KEY, JSON.stringify(viewed));
-  }
-};
+// const addViewedPost = (postId) => {
+//   const viewed = getViewedPosts();
+//   if (!viewed.includes(postId)) {
+//     viewed.push(postId);
+//     localStorage.setItem(VIEWED_POSTS_KEY, JSON.stringify(viewed));
+//   }
+// };
 
 const Post = ({ post, user, profile }) => {
   const [isCommentsModalVisible, setIsCommentsModalVisible] = useState(false);
   const [liked, setLiked] = useState(post.is_liked);
   // Проверяем localStorage при инициализации компонента
-  const [isViewed, setIsViewed] = useState(getViewedPosts().includes(post.id));
+  const [isViewed, setIsViewed] = useState(post.is_viewed);
+  // const isViewed = post.is_viewed;
   const navigate = useNavigate();
   const postRef = useRef(null);
 
@@ -82,12 +83,10 @@ const Post = ({ post, user, profile }) => {
     if (isViewed) return;
     try {
       // Отправляем запрос на бэкенд
-      // await Api.Posts.postView({ user_id: profile.id, post_id: post.id });
+      await Api.Posts.view({ user_id: profile.id, post_id: post.id });
       // Отмечаем, что пост просмотрен
       setIsViewed(true);
-      // Добавляем в localStorage, чтобы при перезагрузке не отправлять повторно
-      addViewedPost(post.id);
-      // Можно также увеличить счетчик просмотров
+      // Increasing post view count(not working?)
       post.views_count += 1;
       console.log(`Пользователь ${profile.id} просмотрел пост ${post.id}`);
     } catch (error) {
