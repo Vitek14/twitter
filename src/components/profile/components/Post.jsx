@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Avatar, Button, Card, Image, Typography } from "antd";
+import {Avatar, Button, Card, Dropdown, Image, Menu, Typography} from "antd";
 import { CheckCircleTwoTone, RetweetOutlined } from "@ant-design/icons";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -13,12 +13,13 @@ import CommentModal from "./CommentModal";
 
 const { Text } = Typography;
 
-const Post = ({ post, user, profile }) => {
+const Post = ({ post, user, profile, onDelete }) => {
   const [repostPost, setRepostPost] = useState(null);
   const [isCommentsModalVisible, setIsCommentsModalVisible] = useState(false);
   const [liked, setLiked] = useState(post.is_liked);
   const [isViewed, setIsViewed] = useState(post.is_viewed);
   const [isReposted, setIsReposted] = useState(post.is_reposted)
+  const [isDeleted, setIsDeleted] = useState(false);
   const navigate = useNavigate();
   const postRef = useRef(null);
 
@@ -113,18 +114,7 @@ const Post = ({ post, user, profile }) => {
             >
               {postData.comments_count}
             </Button>
-            <Button
-              type="text"
-              // icon={<RetweetOutlined />}
-              icon={isReposted ? (
-                <RetweetOutlined style={{ color: "#00d907" }} />
-              ) : (
-                <RetweetOutlined />
-              )}
-              style={{ color: "#1890ff" }}
-            >
-              {postData.reposts_count}
-            </Button>
+            {renderRepostButton(postData)}
             <Button
               type="text"
               icon={
@@ -164,8 +154,50 @@ const Post = ({ post, user, profile }) => {
     </Card>
   );
 
+  // if (isDeleted) return null;
+
   const toggleCommentsModal = () => {
-    setIsCommentsModalVisible(!isCommentsModalVisible);
+    setIsCommentsModalVisible(!isCommentsModalVisible);  // Needs to be deleted
+  };
+
+  const handleUndoRepost = async () => {
+    try {
+      await Api.Posts.delete(post.id);
+      onDelete(post.id); // Вызываем функцию удаления из пропсов
+    } catch (error) {
+      console.error("Error undoing repost:", error);
+    }
+  };
+
+  const renderRepostButton = (postData) => {
+    return isReposted ? (
+      <Dropdown
+        overlay={
+          <Menu>
+            <Menu.Item key="undoRepost" onClick={handleUndoRepost}>
+              Undo Repost
+            </Menu.Item>
+          </Menu>
+        }
+        trigger={['click']}
+      >
+        <Button
+          type="text"
+          icon={<RetweetOutlined style={{ color: "#00d907" }} />}
+          style={{ color: "#1890ff" }}
+        >
+          {postData.reposts_count}
+        </Button>
+      </Dropdown>
+    ) : (
+      <Button
+        type="text"
+        icon={<RetweetOutlined />}
+        style={{ color: "#1890ff" }}
+      >
+        {postData.reposts_count}
+      </Button>
+    );
   };
 
   const handleLike = async () => {
@@ -304,13 +336,7 @@ const Post = ({ post, user, profile }) => {
                 >
                   {post.comments_count}
                 </Button>
-                <Button
-                  type="text"
-                  icon={<RetweetOutlined />}
-                  style={{ color: "#1890ff" }}
-                >
-                  {post.reposts_count}
-                </Button>
+                {renderRepostButton(post)}
                 <Button
                   type="text"
                   icon={

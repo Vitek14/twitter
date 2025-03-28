@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import { Avatar, Card, Typography, Image, Button, List, Space, Input, Form, Dropdown, Menu, Modal } from 'antd';
-import { LikeOutlined, RetweetOutlined } from '@ant-design/icons';
+import {ArrowLeftOutlined, CheckCircleTwoTone, LikeOutlined, RetweetOutlined} from '@ant-design/icons';
 import ControlPanel from '../common_components/new_control_panel/ControlPanel';
 import RecommendationPanel from '../common_components/new_recommendation_panel/RecommendationPanel';
 import Api from "../../api.js";
@@ -16,6 +16,7 @@ const PostComponent = () => {
   const [editingCommentId, setEditingCommentId] = useState(null);
   const [editedContent, setEditedContent] = useState('');
   const navigate = useParams();
+  const navigation = useNavigate();
 
   // For repost
   const [showQuoteModal, setShowQuoteModal] = useState(false);
@@ -143,15 +144,29 @@ const PostComponent = () => {
         <ControlPanel profileInfo={profile} />
       </div>
 
-      <div style={{ maxWidth: 800, margin: '0 auto' }}>
+      <div style={{maxWidth: 800, margin: '0 auto'}}>
+        <div className="main__header">
+          <div className="main__content-box">
+            <Space className="overview__space-wrapper" direction="horizontal" align="center">
+              <Button
+                color="default"
+                variant="link"
+                icon={<ArrowLeftOutlined/>}
+                size="large"
+                onClick={() => {navigation(-1)}}
+              />
+              <Title level={3} style={{marginLeft: "50px", marginTop: 10, marginBottom: 10}}>Post</Title>
+            </Space>
+          </div>
+        </div>
         <Card>
-          <Space align="start" size={16} style={{ width: '100%' }}>
-            <Avatar size={48} src={post.user.avatar_url} />
-            <div style={{ flex: 1 }}>
+          <Space align="start" size={16} style={{width: '100%'}}>
+            <Avatar size={48} src={post.user.avatar_url}/>
+            <div style={{flex: 1}}>
               <Text strong>
                 {post.user.first_name} {post.user.last_name}
               </Text>
-              <div style={{ margin: '12px 0' }}>
+              <div style={{margin: '12px 0'}}>
                 <Text>{post.content}</Text>
               </div>
               {post.image_url && (
@@ -159,11 +174,11 @@ const PostComponent = () => {
                   width="100%"
                   src={post.image_url}
                   alt="Post content"
-                  style={{ borderRadius: 8, marginBottom: 16 }}
+                  style={{borderRadius: 8, marginBottom: 16}}
                 />
               )}
               <Space size="large">
-                <Button icon={<LikeOutlined />}>
+                <Button icon={<LikeOutlined/>}>
                   {post.likes_count} Likes
                 </Button>
                 <Dropdown
@@ -179,7 +194,7 @@ const PostComponent = () => {
                   }
                   trigger={['click']}
                 >
-                  <Button icon={<RetweetOutlined />}>
+                  <Button icon={<RetweetOutlined/>}>
                     {post.reposts_count} Reposts
                   </Button>
                 </Dropdown>
@@ -195,18 +210,24 @@ const PostComponent = () => {
                   const isOwnComment = comment.user.id === profile.id;
                   return (
                     <List.Item
-                      style={{ paddingLeft: 0 }}
+                      style={{paddingLeft: 0}}
                       actions={
                         isOwnComment && (
                           editingCommentId === comment.id ? [
                             <Button key="save" onClick={() => handleEditComment(comment.id)}>
                               Save
                             </Button>,
-                            <Button key="cancel" onClick={() => { setEditingCommentId(null); setEditedContent(''); }}>
+                            <Button key="cancel" onClick={() => {
+                              setEditingCommentId(null);
+                              setEditedContent('');
+                            }}>
                               Cancel
                             </Button>
                           ] : [
-                            <Button key="edit" onClick={() => { setEditingCommentId(comment.id); setEditedContent(comment.content); }}>
+                            <Button key="edit" onClick={() => {
+                              setEditingCommentId(comment.id);
+                              setEditedContent(comment.content);
+                            }}>
                               Edit
                             </Button>,
                             <Button key="delete" onClick={() => handleDeleteComment(comment.id)}>
@@ -217,14 +238,14 @@ const PostComponent = () => {
                       }
                     >
                       <List.Item.Meta
-                        avatar={<Avatar src={comment.user.avatar_url} />}
+                        avatar={<Avatar src={comment.user.avatar_url}/>}
                         title={<Text strong>{comment.user.first_name}</Text>}
                         description={
                           editingCommentId === comment.id ? (
                             <Input.TextArea
                               value={editedContent}
                               onChange={(e) => setEditedContent(e.target.value)}
-                              autoSize={{ minRows: 2, maxRows: 6 }}
+                              autoSize={{minRows: 2, maxRows: 6}}
                             />
                           ) : (
                             comment.content
@@ -234,16 +255,16 @@ const PostComponent = () => {
                     </List.Item>
                   );
                 }}
-                style={{ marginTop: 24 }}
+                style={{marginTop: 24}}
               />
-              <Form onFinish={handleCommentSubmit} style={{ marginTop: 16 }}>
+              <Form onFinish={handleCommentSubmit} style={{marginTop: 16}}>
                 <Input.TextArea
                   rows={4}
                   value={newCommentContent}
                   onChange={(e) => setNewCommentContent(e.target.value)}
                   placeholder="Write a comment..."
                 />
-                <Button type="primary" htmlType="submit" style={{ marginTop: 8 }}>
+                <Button type="primary" htmlType="submit" style={{marginTop: 8}}>
                   Post Comment
                 </Button>
               </Form>
@@ -262,12 +283,12 @@ const PostComponent = () => {
             value={quoteContent}
             onChange={(e) => setQuoteContent(e.target.value)}
             placeholder="Add your comment..."
-            autoSize={{ minRows: 4, maxRows: 8 }}
+            autoSize={{minRows: 4, maxRows: 8}}
           />
         </Modal>
       </div>
 
-      <RecommendationPanel />
+      <RecommendationPanel/>
     </div>
   );
 };

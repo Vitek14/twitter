@@ -36,6 +36,7 @@ const Posts = {
   unlike: (post_id, user_id) => axios.delete("/user_posts/" + post_id + "/unlike/" + user_id),
   view: (body) => axios.post("/user_posts/view", body),
   repost: (body) => axios.post("/user_posts/repost", body),
+  delete: (post_id) => axios.delete("/user_posts/" + post_id),
 }
 
 const Login = {

@@ -41,17 +41,31 @@ const FallbackImage = ({ src, fallbackSrc, isAvatar, ...props }) => {
 
 const Profile = ({profile, profilePosts, users}) => {
   // const [profile, setProfile] = useState([]);
+  const [posts, setPosts] = useState([]); // Начальное значение - пустой массив
+
+  // Синхронизируем состояние при изменении profilePosts
+  useEffect(() => {
+    setPosts([...profilePosts]);
+  }, [profilePosts]);
   console.log("Profile is: ", profile)
 
    // Сортируем посты по created_at от новых к старым
-  const sortedProfilePosts = [...profilePosts].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-  console.log(sortedProfilePosts);
+  const sortedProfilePosts = [...posts].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  // const sortedProfilePosts = [...profilePosts].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  console.log("RAW: ", profilePosts);
+  console.log("UNSORTED: ", posts);
+  console.log("SORTED: ", sortedProfilePosts);
+  // console.log(sortedProfilePosts);
 
   const fallbackImageUrl =
     "../../../404_avatar.png";
   const bannerFallbackUrl =
     "../../../404_banner.png"; // Новый fallback URL для баннера
 
+  // Функция для удаления поста из списка
+  const handleDeletePost = (postId) => {
+    setPosts(prev => prev.filter(p => p.id !== postId));
+  };
 
   console.log("Reutrn profile.....")
   return (
@@ -67,12 +81,6 @@ const Profile = ({profile, profilePosts, users}) => {
               />
           </Col>
           <Col>
-            {/*<Avatar*/}
-            {/*  className="profile__avatar"*/}
-            {/*  size={132}*/}
-            {/*  src={profile.avatar_url}*/}
-            {/*  // src="src/assets/Avatar.png"*/}
-            {/*/>*/}
             <FallbackImage
               isAvatar
               src={profile.avatar_url}
@@ -85,14 +93,16 @@ const Profile = ({profile, profilePosts, users}) => {
         <Content>
           <ContentTabs />
           {sortedProfilePosts.map((post, key) => {
-            const user = users[post.user_id - 1]; // -1??? EXPERIMENTAL!!!
+            const user = users.find(u => u.id === post.user_id); // Более безопасный поиск
+            // const user = users[post.user_id - 1]; // -1??? EXPERIMENTAL!!!
             return (
               user && (
                 <Post
-                  key={key}
+                  key={post.id}
                   post={post}
                   user={user} // Передаем пользователя в компонент Post
                   profile={profile}
+                  onDelete={handleDeletePost}
                 />
               )
             );
