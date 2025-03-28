@@ -18,6 +18,7 @@ const Post = ({ post, user, profile }) => {
   const [isCommentsModalVisible, setIsCommentsModalVisible] = useState(false);
   const [liked, setLiked] = useState(post.is_liked);
   const [isViewed, setIsViewed] = useState(post.is_viewed);
+  const [isReposted, setIsReposted] = useState(post.is_reposted)
   const navigate = useNavigate();
   const postRef = useRef(null);
 
@@ -35,18 +36,24 @@ const Post = ({ post, user, profile }) => {
   }, [post.parent_post_id]);
 
   // Отрисовка базовой карточки поста (заголовок, изображение, действия)
-  const renderPostCard = (postData, userData, showActions = true) => (
+  const renderPostCard = (postData, userData, showActions = true, isRepost=false) => (
     <Card
       hoverable
       style={{ width: "100%", borderRadius: "8px" }}
       bordered={true}
     >
       {/* Header Section: аватарка слева, а справа имя и контент */}
+      {isRepost && (
+          <div style={{marginBottom: "8px", marginLeft: "40px", textAlign: "left"}}>
+            <RetweetOutlined style={{color: "#5e5e5e", marginRight: "8px"}} />
+            <Text type="secondary">You reposted</Text>
+          </div>
+        )}
       <div style={{ display: "flex", alignItems: "flex-start", marginBottom: "8px" }}>
         <Avatar
           src={userData.avatar_url}
           size="large"
-          style={{ minWidth: "50px", minHeight: "50px" }}
+          style={{minWidth: "50px", minHeight: "50px" }}
         />
         <div
           style={{
@@ -108,7 +115,12 @@ const Post = ({ post, user, profile }) => {
             </Button>
             <Button
               type="text"
-              icon={<RetweetOutlined />}
+              // icon={<RetweetOutlined />}
+              icon={isReposted ? (
+                <RetweetOutlined style={{ color: "#00d907" }} />
+              ) : (
+                <RetweetOutlined />
+              )}
               style={{ color: "#1890ff" }}
             >
               {postData.reposts_count}
@@ -348,22 +360,15 @@ const Post = ({ post, user, profile }) => {
   }
 
   // Сценарий чистого репоста (без собственного текста)
-  if (post.parent_id && repostPost) {
+  if (post.parent_post_id && repostPost) {
     return (
       <>
         <div ref={postRef}>
-          <div style={{ marginBottom: "8px", textAlign: "left" }}>
-            <Text type="secondary">You reposted</Text>
-          </div>
-          {renderPostCard(repostPost, repostPost.user)}
+          {/*<div style={{ marginBottom: "8px", textAlign: "left" }}>*/}
+          {/*  <Text type="secondary">You reposted</Text>*/}
+          {/*</div>*/}
+          {renderPostCard(repostPost, repostPost.user, true, true)}
         </div>
-        <CommentModal
-          visible={isCommentsModalVisible}
-          onCancel={toggleCommentsModal}
-          initialComments={post.comments}
-          profile={profile}
-          post={post}
-        />
       </>
     );
   }
