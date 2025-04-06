@@ -1,6 +1,15 @@
 # Twitter Clone Project
 
-## Overview
+<div align="center">
+  
+[Overview](#overview) | 
+[Installation](#installation) | 
+[Usage](#usage) | 
+[Legal](#legal-disclaimer)
+
+</div>
+
+## Overview 🗺️
 
 This project is a learning initiative aimed at replicating the core features of Twitter (X). It consists of a frontend built with **Vite + React** and a backend powered by **Node.js (Express)** with **Sequelize** as the ORM. The backend is hosted in a separate repository, which must be set up for full functionality.
 
@@ -11,7 +20,7 @@ Key features:
 
 ---
 
-## Installation
+## Installation 📥
 
 ### Frontend Setup
 
@@ -70,7 +79,7 @@ Key features:
 
 ---
 
-## Usage
+## Usage 🔌
 
 ### Frontend
 Start the Vite development server:
@@ -94,3 +103,26 @@ The backend API will run on `http://localhost:3000`.
   - npm: **10.9.0**
 - Ensure both frontend and backend servers are running simultaneously for full functionality.
 - The backend requires PostgreSQL to be actively running with the configured database.
+
+## Legal Disclaimer
+
+**Important Notice**  
+This project is strictly **educational** in nature and was created for learning purposes only. It is not:
+
+- Associated with or endorsed by X Corp. (formerly Twitter) or any of its affiliates
+- Intended to replicate or compete with x.com
+- Designed for commercial use
+- Meant to harm, defame, or infringe upon the intellectual property of any company
+
+All references to Twitter/X functionality and branding are used:
+- Solely for educational demonstration
+- Under fair use principles
+- Without claim to original ownership
+
+The codebase is intentionally simplified and lacks many critical features required for a production environment. This implementation does not represent security best practices for authentication or database management.
+
+**Trademarks**  
+Any mentioned trademarks (Twitter, X, etc.) belong to their respective owners. The "Twitter Clone" naming is used purely for descriptive clarity, not as an official designation.
+
+**Non-Commercial**  
+This project is open-source and freely available for educational use only.
