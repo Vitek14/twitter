@@ -56,7 +56,13 @@ const ControlPanel = ({profileInfo}) => {
     setIsModalVisible(false); // Закрываем модальное окно
   };
 
-  // console.log("PROFILE: ", profile);
+  const handleNavigation = (path) => {
+    if (path) {
+      navigate(path);
+    } else {
+      alert('This page is under development');
+    }
+  };
 
   const handleMenuClick = (e) => {
     if (e.key === 'settings') {
@@ -91,34 +97,103 @@ const ControlPanel = ({profileInfo}) => {
             </div>
           </div>
           <Flex justify="flex-end" className="control-panel__box__content" vertical gap={21}>
-            <Button block type="text" shape="round" icon={<HomeOutlined/>}>
+            <Button
+              block
+              type="text"
+              shape="round"
+              icon={<HomeOutlined/>}
+              onClick={() => handleNavigation('/home')}
+            >
               Home
             </Button>
-            <Button block type="text" shape="round" icon={<SearchOutlined/>}>
+
+            <Button
+              block
+              type="text"
+              shape="round"
+              icon={<SearchOutlined/>}
+              onClick={() => handleNavigation()}
+            >
               Explore
             </Button>
-            <Button block type="text" shape="round" icon={<BellOutlined/>}>
+
+            <Button
+              block
+              type="text"
+              shape="round"
+              icon={<BellOutlined/>}
+              onClick={() => handleNavigation('/notifications')}
+            >
               Notifications
             </Button>
-            <Button block type="text" shape="round" icon={<MailOutlined/>}>
+
+            <Button
+              block
+              type="text"
+              shape="round"
+              icon={<MailOutlined/>}
+              onClick={() => handleNavigation('/message')}
+            >
               Messages
             </Button>
-            <Button block type="text" shape="round" icon={<FileTextOutlined/>}>
+
+            <Button
+              block
+              type="text"
+              shape="round"
+              icon={<FileTextOutlined/>}
+              onClick={() => handleNavigation()}
+            >
               Lists
             </Button>
-            <Button block type="text" shape="round" icon={<BookOutlined/>}>
+
+            <Button
+              block
+              type="text"
+              shape="round"
+              icon={<BookOutlined/>}
+              onClick={() => handleNavigation()}
+            >
               Bookmarks
             </Button>
-            <Button block type="text" shape="round" icon={<CommentOutlined/>}>
+
+            <Button
+              block
+              type="text"
+              shape="round"
+              icon={<CommentOutlined/>}
+              onClick={() => handleNavigation()}
+            >
               Communities
             </Button>
-            <Button block type="text" shape="round" icon={<CheckCircleOutlined/>}>
+
+            <Button
+              block
+              type="text"
+              shape="round"
+              icon={<CheckCircleOutlined/>}
+              onClick={() => handleNavigation()}
+            >
               Verified Orgs
             </Button>
-            <Button block type="text" shape="round" icon={<UserOutlined/>}>
+
+            <Button
+              block
+              type="text"
+              shape="round"
+              icon={<UserOutlined/>}
+              onClick={() => handleNavigation('/profile')}
+            >
               Profile
             </Button>
-            <Button block type="text" shape="round" icon={<MoreOutlined/>}>
+
+            <Button
+              block
+              type="text"
+              shape="round"
+              icon={<MoreOutlined/>}
+              onClick={() => handleNavigation()}
+            >
               More
             </Button>
             <Button block
